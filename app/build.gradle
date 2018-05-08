@@ -35,4 +35,7 @@ dependencies {
 
     // RecyclerView
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+
+    // market version check
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.10.2'
 }
