@@ -13,6 +13,11 @@ import java.util.List;
 
 import butterknife.BindView;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.mainA_recycler_view)

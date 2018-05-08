@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import com.example.cnwlc.memo.R;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
 public class DialogUtil extends AlertDialog {
 
     private String title;

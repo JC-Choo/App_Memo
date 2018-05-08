@@ -6,6 +6,11 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class MemoApplication extends Application {
     private static MemoApplication instance;
 

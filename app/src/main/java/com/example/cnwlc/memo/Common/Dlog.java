@@ -4,6 +4,11 @@ import android.util.Log;
 
 import com.example.cnwlc.memo.MemoApplication;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class Dlog {
     static final String TAG = MemoApplication.class.getSimpleName();
 

@@ -16,6 +16,11 @@ import java.util.List;
 //import com.example.cnwlc.app_memo.InviteItem;
 //import com.example.cnwlc.app_memo.InviteRecyclerAdapter;
 
+
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
 public class PermissionUtil {
 
     private static PermissionUtil instance;

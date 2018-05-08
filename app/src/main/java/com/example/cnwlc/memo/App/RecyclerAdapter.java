@@ -10,6 +10,11 @@ import com.example.cnwlc.memo.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class RecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private ArrayList<Item> arrayListItem = new ArrayList<>();

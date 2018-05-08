@@ -5,6 +5,11 @@ import android.content.SharedPreferences;
 
 import com.example.cnwlc.memo.MemoApplication;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class SharedPreferenceUtil {
     private static Context context;
     private SharedPreferences preferences;

@@ -9,6 +9,10 @@ import android.content.IntentFilter;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
 public class SendSmsUtil {
     private static SendSmsUtil instance;
     public static SendSmsUtil getInstance() {

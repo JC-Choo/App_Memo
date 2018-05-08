@@ -5,6 +5,11 @@ import android.widget.Toast;
 
 import com.example.cnwlc.memo.R;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class BackPressClose {
     private Activity activity;
     private float pressedTime;

@@ -11,6 +11,11 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import butterknife.ButterKnife;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public abstract class BaseActivity extends AppCompatActivity {
     private BackPressClose backPressClose;
 

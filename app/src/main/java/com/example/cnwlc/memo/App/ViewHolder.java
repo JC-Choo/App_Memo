@@ -9,6 +9,11 @@ import com.example.cnwlc.memo.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class ViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.memo_item_textView_title)
     TextView tvTitle;

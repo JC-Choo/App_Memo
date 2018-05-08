@@ -1,5 +1,10 @@
 package com.example.cnwlc.memo.App;
 
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+
 public class Item {
     private String sTitle;
     private String sDaily;
