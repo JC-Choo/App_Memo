@@ -26,15 +26,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    // UI
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'     // RecyclerView
+
     // butterknife
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     // title bar 배경 없애기
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-
-    // RecyclerView
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
 
     // market version check
     implementation group: 'org.jsoup', name: 'jsoup', version: '1.10.2'

@@ -6,6 +6,14 @@
     <string name="yes">예</string>
     <string name="no">아니오</string>
 
+    <string name="example">example</string>
+    <string name="select">Select</string>
+    <string name="start">Start</string>
+
+    <string name="first">First</string>
+    <string name="second">Second</string>
+    <string name="third">Third</string>
+
 
 
     <!--Toast-->
