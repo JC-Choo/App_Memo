@@ -1,9 +1,11 @@
 package com.example.cnwlc.memo.App;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.cnwlc.memo.App.etc.SecondActivity;
 import com.example.cnwlc.memo.Common.BaseActivity;
 import com.example.cnwlc.memo.R;
 import com.example.cnwlc.memo.Util.PermissionUtil;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
@@ -49,5 +52,11 @@ public class MainActivity extends BaseActivity {
         }
 
         recyclerView.setAdapter(new RecyclerAdapter());
+    }
+
+    @OnClick(R.id.mainA_button)
+    public void onClickedSecond() {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(intent);
     }
 }
