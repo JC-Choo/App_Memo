@@ -1,5 +1,9 @@
 package com.example.cnwlc.memo.Util.sqlite;
 
+/**
+ * Created by Bridge on 2018-05-11.
+ */
+
 public class Person {
     private int _id;
     private String name;

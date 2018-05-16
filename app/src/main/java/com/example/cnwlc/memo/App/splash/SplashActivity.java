@@ -6,7 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.cnwlc.memo.App.MainActivity;
+import com.example.cnwlc.memo.App.main.mvp.MainActivity;
 import com.example.cnwlc.memo.R;
 
 import butterknife.BindView;

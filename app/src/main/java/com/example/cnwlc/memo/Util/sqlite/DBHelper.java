@@ -12,6 +12,10 @@ import com.example.cnwlc.memo.Util.ToastUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Bridge on 2018-05-11.
+ */
+
 public class DBHelper extends SQLiteOpenHelper {
     private Context context;
     private String dataBaseName;

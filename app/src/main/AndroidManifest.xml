@@ -22,8 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".App.MainActivity" />
+        <activity android:name=".App.main.mvp.MainActivity" />
         <activity android:name=".App.etc.SecondActivity" />
+        <activity android:name=".App.main_write.mvp.WriteActivity" />
 
     </application>
 

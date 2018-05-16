@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * Created by Bridge on 2018-05-11.
+ */
+
 public class PersonListAdapter extends BaseAdapter {
     private List people;
     private Context context;

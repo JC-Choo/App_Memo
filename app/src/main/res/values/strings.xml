@@ -5,6 +5,7 @@
     <string name="content">내용</string>
     <string name="yes">예</string>
     <string name="no">아니오</string>
+    <string name="test">test</string>
 
     <string name="example">example</string>
     <string name="select">Select</string>
@@ -14,7 +15,11 @@
     <string name="second">Second</string>
     <string name="third">Third</string>
 
-
+    <!--MainActivity-->
+    <string name="memo">메모</string>
+    <string name="edit">편집</string>
+    <string name="completion">완료</string>
+    <string name="search">검색</string>
 
     <!--Toast-->
     <string name="back_press">한 번 더 누르면 종료됩니다.</string>

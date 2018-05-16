@@ -10,6 +10,10 @@ import com.example.cnwlc.memo.R;
 
 import java.util.List;
 
+/**
+ * Created by Bridge on 2018-05-16.
+ */
+
 public class SQLiteUtil {
     private static Activity context;
     private static String dataBaseName;
