@@ -24,7 +24,6 @@ public class SharedPreferenceUtil {
 
 
     private static SharedPreferenceUtil instance;
-
     public static SharedPreferenceUtil getInstance() {
         if (instance == null)
             instance = new SharedPreferenceUtil(context);

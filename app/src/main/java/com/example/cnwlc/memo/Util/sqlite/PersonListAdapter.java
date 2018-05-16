@@ -1,5 +1,6 @@
 package com.example.cnwlc.memo.Util.sqlite;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
@@ -14,9 +15,6 @@ public class PersonListAdapter extends BaseAdapter {
     private List people;
     private Context context;
 
-    /**
-     * 생성자 * @param people : Person List * @param context
-     */
     public PersonListAdapter(List people, Context context) {
         this.people = people;
         this.context = context;
@@ -24,12 +22,12 @@ public class PersonListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return this.people.size();
+        return people.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.people.get(position);
+        return people.get(position);
     }
 
     @Override
@@ -37,46 +35,55 @@ public class PersonListAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Holder holder = null;
+        DBHolder dbHolder = null;
         if (convertView == null) {
-            // convertView가 없으면 초기화합니다.
+            // convertView 가 없으면 초기화
             convertView = new LinearLayout(context);
             ((LinearLayout) convertView).setOrientation(LinearLayout.HORIZONTAL);
-            TextView tvId = new TextView(context);
-            tvId.setPadding(10, 0, 20, 0);
-            tvId.setTextColor(Color.rgb(0, 0, 0));
-            TextView tvName = new TextView(context);
-            tvName.setPadding(20, 0, 20, 0);
-            tvName.setTextColor(Color.rgb(0, 0, 0));
-            TextView tvAge = new TextView(context);
-            tvAge.setPadding(20, 0, 20, 0);
-            tvAge.setTextColor(Color.rgb(0, 0, 0));
-            TextView tvPhone = new TextView(context);
-            tvPhone.setPadding(20, 0, 20, 0);
-            tvPhone.setTextColor(Color.rgb(0, 0, 0));
-            ((LinearLayout) convertView).addView(tvId);
-            ((LinearLayout) convertView).addView(tvName);
-            ((LinearLayout) convertView).addView(tvAge);
-            ((LinearLayout) convertView).addView(tvPhone);
-            holder = new Holder();
-            holder.tvId = tvId;
-            holder.tvName = tvName;
-            holder.tvAge = tvAge;
-            holder.tvPhone = tvPhone;
-            convertView.setTag(holder);
+
+            TextView textViewId = new TextView(context);
+            textViewId.setPadding(10, 0, 20, 0);
+            textViewId.setTextColor(Color.rgb(0, 0, 0));
+
+            TextView textViewName = new TextView(context);
+            textViewName.setPadding(20, 0, 20, 0);
+            textViewName.setTextColor(Color.rgb(0, 0, 0));
+
+            TextView textViewAge = new TextView(context);
+            textViewAge.setPadding(20, 0, 20, 0);
+            textViewAge.setTextColor(Color.rgb(0, 0, 0));
+
+            TextView textViewPhone = new TextView(context);
+            textViewPhone.setPadding(20, 0, 20, 0);
+            textViewPhone.setTextColor(Color.rgb(0, 0, 0));
+
+            ((LinearLayout) convertView).addView(textViewId);
+            ((LinearLayout) convertView).addView(textViewName);
+            ((LinearLayout) convertView).addView(textViewAge);
+            ((LinearLayout) convertView).addView(textViewPhone);
+
+            dbHolder = new DBHolder();
+            dbHolder.textViewId = textViewId;
+            dbHolder.textViewName = textViewName;
+            dbHolder.textViewAge = textViewAge;
+            dbHolder.textViewPhone = textViewPhone;
+
+            convertView.setTag(dbHolder);
         } else {
             // convertView가 있으면 홀더를 꺼냅니다.
-            holder = (Holder) convertView.getTag();
+            dbHolder = (DBHolder) convertView.getTag();
         }
 
         // 한명의 데이터를 받아와서 입력합니다.
         Person person = (Person) getItem(position);
-        holder.tvId.setText(person.get_id() + "");
-        holder.tvName.setText(person.getName());
-        holder.tvAge.setText(person.getAge() + "");
-        holder.tvPhone.setText(person.getPhone());
+        dbHolder.textViewId.setText(person.get_id() + "");
+        dbHolder.textViewName.setText(person.getName());
+        dbHolder.textViewAge.setText(person.getAge() + "");
+        dbHolder.textViewPhone.setText(person.getPhone());
+
         return convertView;
     }
 }

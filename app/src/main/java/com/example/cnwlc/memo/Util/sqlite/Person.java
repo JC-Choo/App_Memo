@@ -1,7 +1,6 @@
 package com.example.cnwlc.memo.Util.sqlite;
 
 public class Person {
-    // PK
     private int _id;
     private String name;
     private String age;

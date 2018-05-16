@@ -1,50 +1,53 @@
 package com.example.cnwlc.memo.Util.sqlite;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.example.cnwlc.memo.App.MainActivity;
+import com.example.cnwlc.memo.R;
 
 import java.util.List;
 
 public class SQLiteUtil {
+    private static Activity context;
+    private static String dataBaseName;
 
     private static SQLiteUtil instance;
     public static SQLiteUtil getInstance() {
         if(instance == null)
-            instance = new SQLiteUtil(Activity context, String dataBaseName);
+            instance = new SQLiteUtil(context, dataBaseName);
 
         return instance;
     }
 
-    private Activity context;
-    private String dataBaseName;
-
-    public SQLiteUtil(Activity context, String dataBaseName) {
+    private SQLiteUtil(Activity context, String dataBaseName) {
         this.context = context;
         this.dataBaseName = dataBaseName;
 
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
+
         final EditText etName = new EditText(context);
-        etName.setHint("이름을 입력하세요.");
+        etName.setHint(R.string.SQLiteUtil_enter_name);
+
         final EditText etAge = new EditText(context);
-        etAge.setHint("나이를 입력하세요.");
+        etAge.setHint(R.string.SQLiteUtil_enter_age);
+
         final EditText etPhone = new EditText(context);
-        etPhone.setHint("전화번호를 입력하세요.");
+        etPhone.setHint(R.string.SQLiteUtil_enter_cellphone);
+
         layout.addView(etName);
         layout.addView(etAge);
         layout.addView(etPhone);
     }
 
+
     private DBHelper dbHelper;
     public void dataBaseName() {
         dbHelper = new DBHelper(context, dataBaseName, null, 1);
-        dbHelper.testDB();
+//        dbHelper.testDB();
     }
 
     public void dataName(String name, String age, String phone) {
