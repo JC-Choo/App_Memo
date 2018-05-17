@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff">
+
+    <ImageView
+        android:id="@+id/loginA_image_view_memo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/memo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/SignInA_edit_text_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_toStartOf="@+id/SignInA_button_login"
+                android:hint="@string/hint_id"
+                android:textColor="@color/black"
+                android:textColorHint="@color/silver"
+                android:background="@null" />
+
+            <EditText
+                android:id="@+id/SignInA_edit_text_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SignInA_edit_text_id"
+                android:layout_toStartOf="@+id/SignInA_button_login"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/silver"
+                android:background="@null" />
+
+            <CheckBox
+                android:id="@+id/SignInA_check_box_auto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SignInA_edit_text_password"
+                android:text="@string/auto_sign_in"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/SignInA_button_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/custom_button"
+                android:text="@string/sign_in"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/SignInA_button_join_membership"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/sign_up"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/SignInA_button_temporary_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/temporary_sign_in"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+</RelativeLayout>

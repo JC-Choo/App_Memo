@@ -6,7 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.cnwlc.memo.App.main.mvp.MainActivity;
+import com.example.cnwlc.memo.App.login.SignInActivity;
 import com.example.cnwlc.memo.R;
 
 import butterknife.BindView;
@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @OnClick(R.id.splashActivityButton)
     public void onClickStart() {
-        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
         startActivity(intent);
     }
 }

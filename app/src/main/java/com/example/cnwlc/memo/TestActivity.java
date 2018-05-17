@@ -19,7 +19,7 @@ import com.example.cnwlc.memo.Util.sqlite.SQLiteUtil;
 
 public class TestActivity extends BaseActivity {
 
-    private Button btnCreateDatabase, btnInsertDatabase, btnSelectAllData;
+    private Button btnCreateDatabase, btnInsertDatabase, btnSelectAllData, btnUpdateDatabase, btnDeleteDatabase;
     private ListView lvPeople;
 
     private String dataBaseName;
@@ -81,7 +81,23 @@ public class TestActivity extends BaseActivity {
         btnSelectAllData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLiteUtil.getInstance().getData(lvPeople);
+                SQLiteUtil.getInstance().showData(lvPeople);
+            }
+        });
+
+        btnUpdateDatabase = (Button) findViewById(R.id.btnUpdateData);
+        btnUpdateDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnDeleteDatabase = (Button) findViewById(R.id.btnDeleteData);
+        btnDeleteDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

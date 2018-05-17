@@ -8,23 +8,37 @@
     <!-- DB 생성 버튼 -->
     <Button
         android:id="@+id/btnCreateButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DB 생성" />
 
     <!-- Data 생성 버튼 -->
     <Button
         android:id="@+id/btnInsertButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Data 생성" />
 
     <!-- Data 가져오기 버튼 -->
     <Button
         android:id="@+id/btnSelectAllData"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Data 가져오기" />
+
+    <!-- Data 수정기 버튼 -->
+    <Button
+        android:id="@+id/btnUpdateData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data 수정하기" />
+
+    <!-- Data 삭제하기 버튼 -->
+    <Button
+        android:id="@+id/btnDeleteData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data 삭제하기" />
 
     <!-- 보이지 않게 처리함 -->
     <ListView

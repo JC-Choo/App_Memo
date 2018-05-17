@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.example.cnwlc.memo.Common.Dlog;
 import com.example.cnwlc.memo.R;
 
 import java.util.List;
@@ -73,7 +74,7 @@ public class SQLiteUtil {
                 String age = etAge.getText().toString();
                 String phone = etPhone.getText().toString();
 
-                dataName(name, age, phone);
+                setData(name, age, phone);
             }
         }).setNeutralButton("취소", new DialogInterface.OnClickListener() {
             @Override
@@ -89,10 +90,10 @@ public class SQLiteUtil {
     // DataBase Name 을 정할 method(context 는 Toast를 띄우기 위해 사용, dataBaseName 은 db의 이름을 정하기 위해 사용)
     public void dataBaseName() {
         dbHelper = new DBHelper(context, dataBaseName, null, 1);
-        dbHelper.testDB();
     }
 
-    public void dataName(String name, String age, String phone) {
+    // Data를 입력하기 위한 method
+    public void setData(String name, String age, String phone) {
         if (dbHelper == null) {
             dbHelper = new DBHelper(context, dataBaseName, null, 1);
         }
@@ -102,12 +103,13 @@ public class SQLiteUtil {
         person.setAge(age);
         person.setPhone(phone);
 
-        dbHelper.addPerson(person);
+        dbHelper.insertData(person);
     }
 
-    public void getData(ListView lvPeople) {
+    // Data를 출력하기 위한 method
+    public void showData(ListView listView) {
         // ListView를 보여준다.
-        lvPeople.setVisibility(View.VISIBLE);
+        listView.setVisibility(View.VISIBLE);
 
         // DB Helper가 Null이면 초기화 시켜준다.
         if (dbHelper == null) {
@@ -115,9 +117,28 @@ public class SQLiteUtil {
         }
 
         // 1. Person 데이터를 모두 가져온다.
-        List people = dbHelper.getAllPersonData();
+        List people = dbHelper.selectAllData();
 
         // 2. ListView에 Person 데이터를 모두 보여준다.
-        lvPeople.setAdapter(new PersonAdapter(people, context));
+        listView.setAdapter(new PersonAdapter(context, people));
     }
+
+    // 참고
+    // http://here4you.tistory.com/49
+    // http://blog.naver.com/PostView.nhn?blogId=hee072794&logNo=220619425456
+
+//    // Data를 업데이트하기 위한 method
+//    public void updateData(int index, String name, String age, String phone) {
+//        if (dbHelper == null) {
+//            dbHelper = new DBHelper(context, dataBaseName, null, 1);
+//        }
+//
+//        Person person = new Person();
+//        if( !name.equals(person.getName()) ) {
+//
+//        }
+//        person.setName(name);
+//        person.setAge(age);
+//        person.setPhone(phone);
+//    }
 }
