@@ -1,5 +1,6 @@
 package com.example.cnwlc.memo.Util.sqlite;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-05-11.
+ * Created by Bridge on 2018-05-17.
  */
 
 public class DBHelper extends SQLiteOpenHelper {
-    private Context context;
+    private Activity context;
     private String dataBaseName;
     private int dataBaseVersion;
 
-    public DBHelper(Context context, String dataBaseName, SQLiteDatabase.CursorFactory factory, int dataBaseVersion) {
+    public DBHelper(Activity context, String dataBaseName, SQLiteDatabase.CursorFactory factory, int dataBaseVersion) {
         super(context, dataBaseName, factory, dataBaseVersion);
 
         this.context = context;
@@ -51,6 +52,11 @@ public class DBHelper extends SQLiteOpenHelper {
         ToastUtil.shortToast(context, MemoApplication.getInstance().getString(R.string.DBHelper_change_version));
     }
 
+    /** * */
+    public void testDB() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+    }
+
     // Data 를 Insert 하기 위한 method
     public void addPerson(Person person) {
         // 1. 쓸 수 있는 DB 객체를 가져온다.
@@ -63,7 +69,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //        stringBuffer.append(" NAME, AGE, PHONE ) ");
 //        stringBuffer.append(" VALUES ( ?, ?, ? ) ");
         // 원래 위처럼 StringBuffer였으나 String 으로 수정 가능(어차피 한 번만 생성하기 때문에 메모리 차지 같을 듯)
-        String stringBuffer = " INSERT INTO TEST_TABLE ( " +
+        String stringBuffer = " INSERT INTO "+dataBaseName+" ( " +
                 " NAME, AGE, PHONE ) " +
                 " VALUES ( ?, ?, ? ) ";
 

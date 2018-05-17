@@ -15,11 +15,11 @@ import java.util.List;
  * Created by Bridge on 2018-05-11.
  */
 
-public class PersonListAdapter extends BaseAdapter {
+public class PersonAdapter extends BaseAdapter {
     private List people;
     private Context context;
 
-    public PersonListAdapter(List people, Context context) {
+    public PersonAdapter(List people, Context context) {
         this.people = people;
         this.context = context;
     }

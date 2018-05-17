@@ -28,7 +28,7 @@ public class PermissionUtil {
 
     private Activity context;
     private RecyclerView recyclerView;
-    public void PermissionUtil(Activity context, RecyclerView recyclerView) {
+    public void setInitValue(Activity context, RecyclerView recyclerView) {
         this.context = context;
         this.recyclerView = recyclerView;
     }

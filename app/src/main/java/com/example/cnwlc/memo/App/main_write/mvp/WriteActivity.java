@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cnwlc.memo.Common.BaseActivity;
 import com.example.cnwlc.memo.R;
@@ -44,7 +45,7 @@ public class WriteActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.writeA_text_view_completion :
-                ToastUtil.shortToast(this, "wait...");
+                Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

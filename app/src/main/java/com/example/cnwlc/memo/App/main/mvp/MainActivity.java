@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cnwlc.memo.App.main.MainItem;
 import com.example.cnwlc.memo.App.main.MainRecyclerAdapter;
@@ -26,7 +27,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-16.
+ * Created by Bridge on 2018-05-17.
  */
 
 public class MainActivity extends BaseActivity implements MainContract.View {
@@ -46,6 +47,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         super.onCreate(savedInstanceState);
         context = MainActivity.this;
         presenter = new MainPresenter(this, context);
+        presenter.start();
 
         initView();
     }
@@ -76,13 +78,13 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
         switch (v.getId()) {
             case R.id.mainA_relative_layout_back :
-                ToastUtil.shortToast(this, "wait...");
+                Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mainA_image_view_add_memo :
                 intent = new Intent(MainActivity.this, WriteActivity.class);
                 break;
             case R.id.mainA_text_view_edit :
-                ToastUtil.shortToast(this, "wait...");
+                Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mainA_text_view_search :
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -98,7 +100,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Override
     public void showPermissionDialog() {
-        PermissionUtil.getInstance().PermissionUtil(context, recyclerView);
+        PermissionUtil.getInstance().setInitValue(context, recyclerView);
         PermissionUtil.getInstance().showPermission();
     }
 }
