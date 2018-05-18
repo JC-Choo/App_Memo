@@ -62,7 +62,7 @@
 
             <Button
                 android:id="@+id/SignUpA_button_id_check"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/SignUpA_edit_text_id"
                 android:layout_alignParentEnd="true"
@@ -120,7 +120,7 @@
 
             <Button
                 android:id="@+id/SignUpA_button_certification_number"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/SignUpA_edit_text_cp"
                 android:layout_alignParentEnd="true"
@@ -143,7 +143,7 @@
 
             <Button
                 android:id="@+id/SignUpA_button_authentication"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/SignUpA_edit_text_certification_number"
                 android:layout_alignParentEnd="true"
@@ -154,7 +154,7 @@
 
             <Button
                 android:id="@+id/SignUpA_button_sign_up"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/SignUpA_button_authentication"
                 android:layout_toStartOf="@+id/SignUpA_button_cancellation"
@@ -164,7 +164,7 @@
 
             <Button
                 android:id="@+id/SignUpA_button_cancellation"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/SignUpA_button_authentication"

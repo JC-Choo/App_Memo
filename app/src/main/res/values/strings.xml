@@ -33,11 +33,11 @@
     <string name="hint_password_4">Password/More than four digits</string>
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="cancellation">Cancellation</string>
-    <string name="password_notes">Please enter the number without -.</string>
+    <string name="password_notes">Please enter the number without "-".</string>
     <string name="check_redundancy">Check redundancy</string>
     <string name="hint_cellphone">Mobile phone</string>
     <string name="hint_number_authentication">Number authentication</string>
-    <string name="hint_certification_number">Certification Number</string>
+    <string name="hint_certification_number">Authentication confirmation</string>
     <string name="authentication">Authentication</string>
 
     <!--Toast-->
@@ -48,4 +48,6 @@
     <string name="SQLiteUtil_enter_name">Please enter your name.</string>
     <string name="SQLiteUtil_enter_age">Please enter your age.</string>
     <string name="SQLiteUtil_enter_cellphone">Please enter your mobile phone number.</string>
+    <string name="SignUpActivity_please_enter_your_phone_number">Please enter your phone number.</string>
+    <string name="SignUpActivity_authentication_number">Authentication number</string>
 </resources>

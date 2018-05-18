@@ -21,6 +21,10 @@
     <string name="completion">완료</string>
     <string name="search">검색</string>
 
+    <!--SignUpActivity-->
+
+
+
     <!--activity_sign_in-->
     <string name="hint_id">아이디</string>
     <string name="hint_password">비밀번호</string>
@@ -33,11 +37,11 @@
     <string name="hint_password_4">비밀번호/4자리 이상</string>
     <string name="hint_confirm_password">비밀번호 확인</string>
     <string name="cancellation">취소</string>
-    <string name="password_notes">핸드폰 번호는 - 없이 숫자만 입력해주세요.</string>
+    <string name="password_notes">핸드폰 번호는 "-" 없이 숫자만 입력해주세요.</string>
     <string name="check_redundancy">중복확인</string>
     <string name="hint_cellphone">핸드폰</string>
-    <string name="hint_number_authentication">번호인증</string>
-    <string name="hint_certification_number">번호 인증</string>
+    <string name="hint_number_authentication">번호 인증</string>
+    <string name="hint_certification_number">인증 확인</string>
     <string name="authentication">인증확인</string>
 
     <!--Toast-->
@@ -48,4 +52,6 @@
     <string name="SQLiteUtil_enter_name">이름을 입력하세요.</string>
     <string name="SQLiteUtil_enter_age">나이를 입력하세요.</string>
     <string name="SQLiteUtil_enter_cellphone">전화번호를 입력하세요.</string>
+    <string name="SignUpActivity_please_enter_your_phone_number">전화번호를 입력해 주세요.</string>
+    <string name="SignUpActivity_authentication_number">인증 번호</string>
 </resources>
