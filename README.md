@@ -12,5 +12,6 @@ Introducing my career.
   - And now, i am studying Kotlin and refactoring "Memo", "Chat&Car" application to MVP pattern and clean code.
   
   
-## 아직 이 repository는 리팩토링 중이라 코드가 많이 없습니다. 리팩토링 하면서 차근차근 올리겠습니다.
-## 리팩토링은 우선 android 에서 mvp pattern 적용 및 코드 정리, 추후 kotlin으로 변경할 것입니다.
+### 아직 이 repository는 리팩토링 중이라 코드가 많이 없습니다. 리팩토링 하면서 차근차근 올리겠습니다.
+### 리팩토링은 우선 android 에서 mvp pattern 적용 및 코드 정리, 추후 kotlin으로 변경할 것입니다.
+
