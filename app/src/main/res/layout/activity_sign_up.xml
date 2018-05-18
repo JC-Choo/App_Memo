@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/SignUpA_relative_layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@null">
+
+        <RelativeLayout
+            android:id="@+id/SignUpA_relative_layout_back"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@null">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow_left" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:text="@string/sign_up"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@+id/SignUpA_relative_layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:padding="20dp">
+
+            <EditText
+                android:id="@+id/SignUpA_edit_text_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toStartOf="@+id/SignUpA_button_id_check"
+                android:background="@null"
+                android:hint="@string/hint_id"
+                android:textColor="@color/black"
+                android:textColorHint="@color/silver" />
+
+            <Button
+                android:id="@+id/SignUpA_button_id_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/SignUpA_edit_text_id"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/check_redundancy"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/SignUpA_edit_text_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SignUpA_button_id_check"
+                android:layout_marginBottom="20dp"
+                android:background="@null"
+                android:hint="@string/hint_password_4"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/silver" />
+
+            <EditText
+                android:id="@+id/SignUpA_edit_text_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SignUpA_edit_text_password"
+                android:layout_marginBottom="10dp"
+                android:background="@null"
+                android:hint="@string/hint_confirm_password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/silver" />
+
+            <TextView
+                android:id="@+id/SignUpA_text_view_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/SignUpA_edit_text_confirm_password"
+                android:layout_marginBottom="20dp"
+                android:text="@string/password_notes"
+                android:textColor="@color/blue"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/SignUpA_edit_text_cp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SignUpA_text_view_notes"
+                android:layout_toLeftOf="@+id/SignUpA_button_certification_number"
+                android:background="@null"
+                android:hint="@string/hint_cellphone"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/silver" />
+
+            <Button
+                android:id="@+id/SignUpA_button_certification_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/SignUpA_edit_text_cp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/hint_number_authentication"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/SignUpA_edit_text_certification_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SignUpA_button_certification_number"
+                android:layout_toLeftOf="@+id/SignUpA_button_authentication"
+                android:background="@null"
+                android:hint="@string/hint_certification_number"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/silver" />
+
+            <Button
+                android:id="@+id/SignUpA_button_authentication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/SignUpA_edit_text_certification_number"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_button"
+                android:text="@string/authentication"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/SignUpA_button_sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SignUpA_button_authentication"
+                android:layout_toStartOf="@+id/SignUpA_button_cancellation"
+                android:background="@drawable/custom_button"
+                android:text="@string/sign_up"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/SignUpA_button_cancellation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/SignUpA_button_authentication"
+                android:background="@drawable/custom_button"
+                android:text="@string/cancellation"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

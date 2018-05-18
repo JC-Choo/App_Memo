@@ -6,14 +6,19 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 
+<<<<<<< HEAD
 /**
  * Created by Bridge on 2018-05-06.
  */
 
+=======
+import com.example.cnwlc.memo.Common.Dlog;
+
+import java.util.Locale;
+>>>>>>> android
 
 public class MemoApplication extends Application {
     private static MemoApplication instance;
-
     public static MemoApplication getInstance() {
         if(instance == null)
             instance = new MemoApplication();
@@ -21,13 +26,14 @@ public class MemoApplication extends Application {
         return instance;
     }
 
-
     public static String userId;
     public static boolean DEBUG;
 
     @Override
     public void onCreate() {    // 앱 생성될 때 호출됩니다. 모든 상태변수와 리소스 초기화 로직을 이곳에서 관리합니다.
         super.onCreate();
+
+        instance = this;
 
         this.DEBUG = isDebuggable(this);
     }
@@ -42,12 +48,18 @@ public class MemoApplication extends Application {
         super.onConfigurationChanged(newConfig);
     }
 
-    /**
-     * 현재 디버그모드여부를 리턴
-     *
-     * @param context
-     * @return
-     */
+    public void getSystemLanguage() {
+        Locale systemLocale = getApplicationContext().getResources().getConfiguration().locale;
+        String strDisplayCountry = systemLocale.getDisplayCountry(); // 대한민국
+        String strCountry = systemLocale.getCountry(); // KR
+        String strLanguage = systemLocale.getLanguage(); // ko
+
+        Dlog.d("strDisplayCountry : "+strDisplayCountry);
+        Dlog.d("strCountry : "+strCountry);
+        Dlog.d("strLanguage : "+strLanguage);
+    }
+
+    // 현재 디버그모드여부를 리턴
     private boolean isDebuggable(Context context) {
         boolean debuggable = false;
 

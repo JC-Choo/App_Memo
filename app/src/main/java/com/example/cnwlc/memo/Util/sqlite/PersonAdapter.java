@@ -12,16 +12,16 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-05-11.
+ * Created by Bridge on 2018-05-17.
  */
 
-public class PersonListAdapter extends BaseAdapter {
-    private List people;
+public class PersonAdapter extends BaseAdapter {
     private Context context;
+    private List people;
 
-    public PersonListAdapter(List people, Context context) {
-        this.people = people;
+    public PersonAdapter(Context context, List people) {
         this.context = context;
+        this.people = people;
     }
 
     @Override
