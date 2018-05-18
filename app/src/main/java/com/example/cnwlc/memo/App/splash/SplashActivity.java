@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.cnwlc.memo.App.login.SignInActivity;
+import com.example.cnwlc.memo.MemoApplication;
 import com.example.cnwlc.memo.R;
 
 import butterknife.BindView;
@@ -26,6 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
 
+        MemoApplication.getInstance().getSystemLanguage();
         setViewPager();
     }
 

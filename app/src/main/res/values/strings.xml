@@ -1,13 +1,13 @@
 <resources>
     <!--공통-->
-    <string name="app_name">나만의 메모</string>
-    <string name="title">제목</string>
-    <string name="content">내용</string>
-    <string name="yes">예</string>
-    <string name="no">아니오</string>
-    <string name="test">test</string>
+    <string name="app_name">My notes</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="test">Test</string>
 
-    <string name="example">example</string>
+    <string name="example">Example</string>
     <string name="select">Select</string>
     <string name="start">Start</string>
 
@@ -16,36 +16,36 @@
     <string name="third">Third</string>
 
     <!--MainActivity-->
-    <string name="memo">메모</string>
-    <string name="edit">편집</string>
-    <string name="completion">완료</string>
-    <string name="search">검색</string>
+    <string name="memo">Memo</string>
+    <string name="edit">Edit</string>
+    <string name="completion">Completion</string>
+    <string name="search">Search</string>
 
     <!--activity_sign_in-->
     <string name="hint_id">ID</string>
     <string name="hint_password">Password</string>
-    <string name="auto_sign_in">자동 로그인</string>
-    <string name="sign_in">로그인</string>
-    <string name="temporary_sign_in">임시 로그인</string>
-    <string name="sign_up">회원가입</string>
+    <string name="auto_sign_in">Auto-Login</string>
+    <string name="sign_in">Login</string>
+    <string name="temporary_sign_in">Temporary Login</string>
+    <string name="sign_up">Join membership</string>
 
     <!--activity_sign_up-->
-    <string name="hint_password_4">Password/4자리 이상</string>
+    <string name="hint_password_4">Password/More than four digits</string>
     <string name="hint_confirm_password">Confirm Password</string>
-    <string name="cancellation">취소</string>
-    <string name="password_notes">핸드폰 번호는 - 없이 숫자만 입력해주세요.</string>
-    <string name="check_redundancy">중복확인</string>
-    <string name="hint_cellphone">Cellphone</string>
-    <string name="hint_number_authentication">번호인증</string>
+    <string name="cancellation">Cancellation</string>
+    <string name="password_notes">Please enter the number without -.</string>
+    <string name="check_redundancy">Check redundancy</string>
+    <string name="hint_cellphone">Mobile phone</string>
+    <string name="hint_number_authentication">Number authentication</string>
     <string name="hint_certification_number">Certification Number</string>
-    <string name="authentication">인증확인</string>
+    <string name="authentication">Authentication</string>
 
     <!--Toast-->
-    <string name="back_press">한 번 더 누르면 종료됩니다.</string>
-    <string name="DBHelper_make_table">Table 생성이 완료되었습니다.</string>
-    <string name="DBHelper_change_version">Application 버전이 올라갔습니다.</string>
-    <string name="DBHelper_insert_data">Data Insert 완료.</string>
-    <string name="SQLiteUtil_enter_name">이름을 입력하세요.</string>
-    <string name="SQLiteUtil_enter_age">나이를 입력하세요.</string>
-    <string name="SQLiteUtil_enter_cellphone">전화번호를 입력하세요.</string>
+    <string name="back_press">Press one more time to exit.</string>
+    <string name="DBHelper_make_table">Table created.</string>
+    <string name="DBHelper_change_version">Application version has been upgraded.</string>
+    <string name="DBHelper_insert_data">Data insertion completed.</string>
+    <string name="SQLiteUtil_enter_name">Please enter your name.</string>
+    <string name="SQLiteUtil_enter_age">Please enter your age.</string>
+    <string name="SQLiteUtil_enter_cellphone">Please enter your mobile phone number.</string>
 </resources>
