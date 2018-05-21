@@ -29,6 +29,7 @@ dependencies {
     // UI
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'     // RecyclerView
+    implementation 'com.github.clans:fab:1.6.2'     // Floating Button
 
     // butterknife
     implementation 'com.jakewharton:butterknife:8.8.1'

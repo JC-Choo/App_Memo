@@ -14,11 +14,10 @@ import android.widget.Toast;
 
 import com.example.cnwlc.memo.App.main.MainItem;
 import com.example.cnwlc.memo.App.main.MainRecyclerAdapter;
-import com.example.cnwlc.memo.App.main_write.mvp.WriteActivity;
+import com.example.cnwlc.memo.App.main_memo.MemoActivity;
 import com.example.cnwlc.memo.Common.BaseActivity;
 import com.example.cnwlc.memo.R;
 import com.example.cnwlc.memo.Util.PermissionUtil;
-import com.example.cnwlc.memo.Util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-17.
+ * Created by Bridge on 2018-05-21.
  */
 
 public class MainActivity extends BaseActivity implements MainContract.View {
@@ -68,7 +67,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         MainRecyclerAdapter mainRecyclerAdapter = new MainRecyclerAdapter(presenter.setData(mainItemList));
         recyclerView.setAdapter(mainRecyclerAdapter);
 
-        textViewNumberOfMemos.setText(mainRecyclerAdapter.getItemCount()+"개의 메모");
+        textViewNumberOfMemos.setText(mainRecyclerAdapter.getItemCount()+getString(R.string.count_of_memo));
     }
 
     @OnClick({R.id.mainA_relative_layout_back, R.id.mainA_image_view_add_memo,
@@ -81,7 +80,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mainA_image_view_add_memo :
-                intent = new Intent(MainActivity.this, WriteActivity.class);
+                intent = new Intent(MainActivity.this, MemoActivity.class);
                 break;
             case R.id.mainA_text_view_edit :
                 Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();

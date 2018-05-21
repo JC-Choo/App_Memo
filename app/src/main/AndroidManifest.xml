@@ -3,9 +3,12 @@
     package="com.example.cnwlc.memo">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MemoApplication"
@@ -33,10 +36,26 @@
         <!--메모 보기 화면-->
         <activity android:name=".App.main.mvp.MainActivity"
             android:screenOrientation="portrait" />
-        <!--메모 작성 화면-->
-        <activity android:name=".App.main_write.mvp.WriteActivity"
+        <!--메모 화면-->
+        <activity android:name=".App.main_memo.MemoActivity"
             android:screenOrientation="portrait" />
 
+
+        <activity android:name=".App.alarm.AlarmMain"
+            android:screenOrientation="portrait" />
+        <activity android:name=".App.game.Timer_CountDown"
+            android:screenOrientation="portrait" />
+        <activity android:name=".App.game.OneToFifty"
+            android:screenOrientation="portrait" />
+        <activity android:name=".App.game.GameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".App.game.Snake"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <receiver android:name=".App.alarm.AlarmReceive" />
 
 
         <!--테스트 화면-->

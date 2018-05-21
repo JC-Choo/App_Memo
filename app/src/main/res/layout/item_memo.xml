@@ -52,12 +52,12 @@
 
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/invite_checkbox"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:button="@android:color/transparent"
-        android:background="@drawable/custom_check_box"
-        android:layout_toEndOf="@+id/memo_item_linear"/>
+    <!--<CheckBox-->
+        <!--android:id="@+id/invite_checkbox"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:button="@android:color/transparent"-->
+        <!--android:background="@drawable/custom_check_box"-->
+        <!--android:layout_toEndOf="@+id/memo_item_linear"/>-->
 
 </RelativeLayout>

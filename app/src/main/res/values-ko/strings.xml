@@ -20,6 +20,9 @@
     <string name="edit">편집</string>
     <string name="completion">완료</string>
     <string name="search">검색</string>
+    <string name="count_of_memo">개의 메모</string>
+
+
 
     <!--activity_sign_in-->
     <string name="hint_id">아이디</string>
@@ -33,12 +36,32 @@
     <string name="hint_password_4">비밀번호/4자리 이상</string>
     <string name="hint_confirm_password">비밀번호 확인</string>
     <string name="cancellation">취소</string>
-    <string name="password_notes">핸드폰 번호는 - 없이 숫자만 입력해주세요.</string>
+    <string name="password_notes">핸드폰 번호는 "-" 없이 숫자만 입력해주세요.</string>
     <string name="check_redundancy">중복확인</string>
     <string name="hint_cellphone">핸드폰</string>
-    <string name="hint_number_authentication">번호인증</string>
-    <string name="hint_certification_number">번호 인증</string>
+    <string name="hint_number_authentication">번호 인증</string>
+    <string name="hint_certification_number">인증 확인</string>
     <string name="authentication">인증확인</string>
+
+    <!--activity_game-->
+    <string name="game">게임</string>
+    <string name="game_1to50">1to50</string>
+    <string name="game_snake">Snake</string>
+    <string name="game_cancellation">게임선택취소</string>
+
+
+
+    <!--SnakeView-->
+    <string name="mode_ready">Snake\nPress Up To Play</string>
+    <string name="mode_pause">Paused\nPress Up To Resume</string>
+    <string name="mode_lose_prefix">Game Over\nScore: </string>
+    <string name="mode_lose_suffix">\nPress Up To Play</string>
+    <!--<string name="str1">점수: </string>-->
+    <!--<string name="str2"/>-->
+    <!--<string name="str3">속도: </string>-->
+    <!--<string name="str4"/>-->
+
+
 
     <!--Toast-->
     <string name="back_press">한 번 더 누르면 종료됩니다.</string>
@@ -48,4 +71,6 @@
     <string name="SQLiteUtil_enter_name">이름을 입력하세요.</string>
     <string name="SQLiteUtil_enter_age">나이를 입력하세요.</string>
     <string name="SQLiteUtil_enter_cellphone">전화번호를 입력하세요.</string>
+    <string name="SignUpActivity_please_enter_your_phone_number">전화번호를 입력해 주세요.</string>
+    <string name="SignUpActivity_authentication_number">인증 번호</string>
 </resources>
