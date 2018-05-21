@@ -1,20 +1,15 @@
-package com.example.cnwlc.memo.Util.sqlite;
+package com.example.cnwlc.memo.Util.sqlite.base;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.example.cnwlc.memo.Common.Dlog;
-import com.example.cnwlc.memo.R;
+import com.example.cnwlc.memo.Util.sqlite.signup.User;
 
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-05-17.
+ * Created by Bridge on 2018-05-21.
  */
 
 public class SQLiteUtil {
@@ -30,6 +25,7 @@ public class SQLiteUtil {
      * http://jeong-pro.tistory.com/86
      *
      */
+
     private SQLiteUtil() {}
     private static class SingleTon {
         public static final SQLiteUtil Instance = new SQLiteUtil();
@@ -44,43 +40,6 @@ public class SQLiteUtil {
     public void setInitValue(Activity context, String dataBaseName) {
         this.context = context;
         this.dataBaseName = dataBaseName;
-    }
-
-    // Dialog 형태에 대한 layout 정의
-    public void setTestDialogView() {
-        LinearLayout layout = new LinearLayout(context);
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-        final EditText etName = new EditText(context);
-        etName.setHint(R.string.SQLiteUtil_enter_name);
-
-        final EditText etAge = new EditText(context);
-        etAge.setHint(R.string.SQLiteUtil_enter_age);
-
-        final EditText etPhone = new EditText(context);
-        etPhone.setHint(R.string.SQLiteUtil_enter_cellphone);
-
-        layout.addView(etName);
-        layout.addView(etAge);
-        layout.addView(etPhone);
-
-        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        dialog.setTitle("정보를 입력하세요")
-                .setView(layout)
-                .setPositiveButton("등록", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String name = etName.getText().toString();
-                String age = etAge.getText().toString();
-                String phone = etPhone.getText().toString();
-
-                setData(name, age, phone);
-            }
-        }).setNeutralButton("취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        }).create().show();
     }
 
 

@@ -1,11 +1,12 @@
-package com.example.cnwlc.memo.Util.sqlite;
+package com.example.cnwlc.memo.Util.sqlite.base;
 
 import android.app.Activity;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.cnwlc.memo.Common.Defines;
+import com.example.cnwlc.memo.Common.Dlog;
 import com.example.cnwlc.memo.MemoApplication;
 import com.example.cnwlc.memo.R;
 import com.example.cnwlc.memo.Util.ToastUtil;
@@ -14,10 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-05-17.
+ * Created by Bridge on 2018-05-21.
  */
 
 public class DBHelper extends SQLiteOpenHelper {
+    private static final int DATABASE_VERSION = Defines.CODE_1;
+    
     private Activity context;
     private String dataBaseName;
     private int dataBaseVersion;
@@ -38,18 +41,19 @@ public class DBHelper extends SQLiteOpenHelper {
         stringBuffer.append(" CREATE TABLE "+dataBaseName+" ( ");
         stringBuffer.append(" _ID INTEGER PRIMARY KEY AUTOINCREMENT, ");
         stringBuffer.append(" NAME TEXT, ");
-        stringBuffer.append(" AGE INTEGER, ");
+        stringBuffer.append(" AGE TEXT, ");
         stringBuffer.append(" PHONE TEXT ) ");
 
         // SQLite Database로 쿼리 실행
         sqLiteDatabase.execSQL(stringBuffer.toString());
-        ToastUtil.shortToast(context, MemoApplication.getInstance().getString(R.string.DBHelper_make_table));
+        ToastUtil.shortToast(context, dataBaseName+" "+MemoApplication.getInstance().getString(R.string.DBHelper_make_table));
     }
 
     // Application 의 버전이 올라가서 Table 구조가 변경되었을 때 실행된다.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        ToastUtil.shortToast(context, MemoApplication.getInstance().getString(R.string.DBHelper_change_version));
+        Dlog.d("db : "+db+", oldVersion : "+oldVersion+", newVersion : "+newVersion);
+        Dlog.d(MemoApplication.getInstance().getString(R.string.DBHelper_change_version));
     }
 
     // Data 를 Insert 하기 위한 method
@@ -67,7 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String stringBuffer = " INSERT INTO "+dataBaseName+" ( NAME, AGE, PHONE ) VALUES ( ?, ?, ? ) ";
 
         sqLiteDatabase.execSQL(stringBuffer, new Object[]{
-                person.getName(), Integer.parseInt(person.getAge()), person.getPhone()
+                person.getName(), person.getAge(), person.getPhone()
         });
 
         ToastUtil.shortToast(context, MemoApplication.getInstance().getString(R.string.DBHelper_insert_data));

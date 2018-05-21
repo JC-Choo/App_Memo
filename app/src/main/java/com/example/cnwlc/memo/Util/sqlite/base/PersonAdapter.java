@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.Util.sqlite;
+package com.example.cnwlc.memo.Util.sqlite.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
