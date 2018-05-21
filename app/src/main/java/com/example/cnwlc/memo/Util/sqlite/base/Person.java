@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.Util.sqlite;
+package com.example.cnwlc.memo.Util.sqlite.base;
 
 /**
  * Created by Bridge on 2018-05-11.

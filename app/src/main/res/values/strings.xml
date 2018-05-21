@@ -22,6 +22,18 @@
     <string name="search">Search</string>
     <string name="count_of_memo">notes</string>
 
+    <!--SignUpActivity-->
+    <string name="enter_id">Please enter your ID.</string>
+    <string name="enter_password">Please enter your Password.</string>
+    <string name="enter_password_confirm">Please enter your password verification.</string>
+    <string name="password_do_not_match">Password do not match</string>
+    <string name="enter_phone_number">Please enter your Phone Number.</string>
+    <string name="enter_authentication_number">Please enter your authentication number.</string>
+    <string name="check_duplicates">Please check duplicates.</string>
+    <string name="authentication_was_successful">Authentication was successful</string>
+    <string name="authentication_failed">Authentication failed</string>
+    <string name="the_id_is_available_to_use">The id is available to use.</string>
+
 
 
     <!--activity_sign_in-->

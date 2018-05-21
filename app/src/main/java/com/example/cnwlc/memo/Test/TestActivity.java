@@ -7,11 +7,12 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.cnwlc.memo.Common.BaseActivity;
 import com.example.cnwlc.memo.R;
-import com.example.cnwlc.memo.Util.sqlite.SQLiteUtil;
+import com.example.cnwlc.memo.Util.sqlite.base.SQLiteUtil;
 
 
 /**
@@ -73,7 +74,35 @@ public class TestActivity extends BaseActivity {
         btnInsertDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLiteUtil.getInstance().setTestDialogView();
+                LinearLayout layout = new LinearLayout(TestActivity.this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                final EditText etName = new EditText(TestActivity.this);
+                etName.setHint(R.string.SQLiteUtil_enter_name);
+
+                final EditText etAge = new EditText(TestActivity.this);
+                etAge.setHint(R.string.SQLiteUtil_enter_age);
+
+                final EditText etPhone = new EditText(TestActivity.this);
+                etPhone.setHint(R.string.SQLiteUtil_enter_cellphone);
+
+                layout.addView(etName);
+                layout.addView(etAge);
+                layout.addView(etPhone);
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(TestActivity.this);
+                dialog.setTitle("정보를 입력하세요")
+                        .setView(layout)
+                        .setPositiveButton("등록", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SQLiteUtil.getInstance().setData(etName.getText().toString(), etAge.getText().toString(), etPhone.getText().toString());
+                            }
+                        }).setNeutralButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).create().show();
             }
         });
 

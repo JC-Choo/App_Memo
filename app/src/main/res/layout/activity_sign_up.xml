@@ -57,6 +57,8 @@
                 android:layout_toStartOf="@+id/SignUpA_button_id_check"
                 android:background="@null"
                 android:hint="@string/hint_id"
+                android:inputType="text|textVisiblePassword"
+                android:privateImeOptions="defaultInputmode=english;"
                 android:textColor="@color/black"
                 android:textColorHint="@color/silver" />
 
@@ -153,7 +155,7 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/SignUpA_button_sign_up"
+                android:id="@+id/SignUpA_button_join_membership"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/SignUpA_button_authentication"

@@ -1,13 +1,20 @@
 package com.example.cnwlc.memo.App.login;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.cnwlc.memo.Common.Defines;
 import com.example.cnwlc.memo.R;
 import com.example.cnwlc.memo.Util.ToastUtil;
+import com.example.cnwlc.memo.Util.sqlite.base.SQLiteUtil;
+//import com.example.cnwlc.memo.Util.sqlite.signup.SQLiteUtilUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +35,11 @@ public class SignUpActivity extends AppCompatActivity {
     @BindView(R.id.SignUpA_edit_text_cp)
     EditText editTextMobilePhone;
     @BindView(R.id.SignUpA_edit_text_certification_number)
-    EditText editTextCertificationNumber;
+    EditText editTextAuthenticationNumber;
+
+    private int certificationNumber;
+    private boolean possibleId = false;
+    private boolean possibleNumber = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,33 +51,98 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void setInitView() {
-
+        if(Build.MODEL.contains("Nexus") || Build.MODEL.contains("nexus")) {
+            editTextId.setInputType(InputType.TYPE_CLASS_TEXT);
+        }
     }
 
     @OnClick({R.id.SignUpA_relative_layout_back, R.id.SignUpA_button_id_check, R.id.SignUpA_button_certification_number,
-            R.id.SignUpA_button_authentication, R.id.SignUpA_button_sign_up, R.id.SignUpA_button_cancellation})
+            R.id.SignUpA_button_authentication, R.id.SignUpA_button_join_membership, R.id.SignUpA_button_cancellation})
     public void onClickedButton(View v) {
         switch (v.getId()) {
             case R.id.SignUpA_relative_layout_back :
                 finish();
                 break;
             case R.id.SignUpA_button_id_check :
+                ToastUtil.shortToast(this, getString(R.string.the_id_is_available_to_use));
+                possibleId = true;
 
+//                SQLiteUtilUser.getInstance().setInitValueUser(SignUpActivity.this, editTextId.getText().toString());
+//                SQLiteUtilUser.getInstance().dataBaseNameUser();
                 break;
             case R.id.SignUpA_button_certification_number :
                 if (editTextMobilePhone.getText().toString().equals("")) {
                     ToastUtil.shortToast(this, getString(R.string.SignUpActivity_please_enter_your_phone_number));
                     return;
                 } else {
-                    int certificationNumber = (int) (Math.random() * 10000);
+                    certificationNumber = (int) (Math.random() * 10000);
                     ToastUtil.longToast(this, getString(R.string.SignUpActivity_authentication_number)+" : "+certificationNumber);
                 }
                 break;
             case R.id.SignUpA_button_authentication :
-
+                if (editTextAuthenticationNumber.getText().toString().equals(String.valueOf(certificationNumber))) {
+                    ToastUtil.shortToast(this, getString(R.string.authentication_was_successful));
+                    possibleNumber = true;
+                } else {
+                    ToastUtil.shortToast(this, getString(R.string.authentication_failed));
+                    possibleNumber = false;
+                }
                 break;
-            case R.id.SignUpA_button_sign_up :
-
+            case R.id.SignUpA_button_join_membership :
+                // 이메일 입력 확인
+                if (editTextId.getText().toString().length() == 0) {
+                    ToastUtil.shortToast(SignUpActivity.this, getString(R.string.enter_id));
+                    editTextId.requestFocus();
+                    return;
+                }
+                // 비밀번호 입력 확인
+                if (editTextPassword.getText().toString().length() < 4) {
+                    ToastUtil.shortToast(SignUpActivity.this, getString(R.string.enter_password));
+                    editTextPassword.requestFocus();
+                    return;
+                }
+                // 비밀번호 확인 입력 확인
+                if (editTextPasswordConfirm.getText().toString().length() < 4) {
+                    ToastUtil.shortToast(SignUpActivity.this, getString(R.string.enter_password_confirm));
+                    editTextPasswordConfirm.requestFocus();
+                    return;
+                }
+                // 비밀번호 일치 확인
+                if (!editTextPassword.getText().toString().equals(editTextPasswordConfirm.getText().toString())) {
+                    ToastUtil.shortToast(SignUpActivity.this, getString(R.string.password_do_not_match));
+                    editTextPassword.setText("");
+                    editTextPasswordConfirm.setText("");
+                    editTextPassword.requestFocus();
+                    return;
+                }
+                // 전화번호 11자리 이상 확인
+                if (editTextMobilePhone.getText().toString().length() < 10) {
+                    ToastUtil.shortToast(SignUpActivity.this, getString(R.string.enter_phone_number));
+                    editTextMobilePhone.requestFocus();
+                    return;
+                }
+                // 인증번호 입력을 안했을 시
+                if (editTextAuthenticationNumber.getText().toString().length() == 0) {
+                    ToastUtil.shortToast(SignUpActivity.this, getString(R.string.enter_authentication_number));
+                    editTextAuthenticationNumber.requestFocus();
+                    return;
+                }
+                // 중복 체크 안할 경우
+                if (!possibleId) {
+                    ToastUtil.shortToast(SignUpActivity.this, getString(R.string.check_duplicates));
+                    return;
+                }
+                // 중복 체크 했을 경우
+                if (possibleId && possibleNumber) {
+//                    SQLiteUtilUser.getInstance().setDataUser(editTextId.getText().toString(), editTextPassword.getText().toString(), editTextMobilePhone.getText().toString());
+                    // 회원 아이디/비번 넘기기
+//                    Intent intent = new Intent(this, SignUpActivity.class);
+//                    intent.putExtra("id", editTextId.getText().toString());
+//                    intent.putExtra("pw", editTextPassword.getText().toString());
+//
+//                    setResult(RESULT_OK, intent);
+//                    finish();
+                }
                 break;
             case R.id.SignUpA_button_cancellation :
                 finish();
@@ -78,5 +154,6 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+//        SQLiteUtilUser.getInstance().showDataUser();
     }
 }

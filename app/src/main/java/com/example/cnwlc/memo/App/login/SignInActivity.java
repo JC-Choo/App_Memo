@@ -9,13 +9,15 @@ import android.widget.EditText;
 
 import com.example.cnwlc.memo.App.main.mvp.MainActivity;
 import com.example.cnwlc.memo.Common.BaseActivity;
+import com.example.cnwlc.memo.Common.Defines;
 import com.example.cnwlc.memo.R;
+//import com.example.cnwlc.memo.Util.sqlite.signup.SQLiteUtilUser;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-19.
+ * Created by Bridge on 2018-05-21.
  */
 
 public class SignInActivity extends BaseActivity {
@@ -48,6 +50,8 @@ public class SignInActivity extends BaseActivity {
                 intent = new Intent(SignInActivity.this, SignUpActivity.class);
                 break;
             case R.id.SignInA_button_temporary_login :
+//                SQLiteUtilUser.getInstance().setInitValueUser(SignInActivity.this, Defines.DATABASE_USER);
+//                SQLiteUtilUser.getInstance().dataBaseNameUser();
                 intent = new Intent(SignInActivity.this, MainActivity.class);
                 break;
         }
