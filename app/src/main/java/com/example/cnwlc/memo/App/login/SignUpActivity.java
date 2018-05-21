@@ -1,13 +1,10 @@
 package com.example.cnwlc.memo.App.login;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.cnwlc.memo.R;
 import com.example.cnwlc.memo.Util.ToastUtil;
@@ -15,6 +12,10 @@ import com.example.cnwlc.memo.Util.ToastUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+/**
+ * Created by Bridge on 2018-05-21.
+ */
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -35,17 +36,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
-        setEditTextLineColor();
         setInitView();
-    }
-
-    private void setEditTextLineColor() {
-        int colorOnCreate = Color.parseColor("#000000");
-        editTextId.getBackground().setColorFilter(colorOnCreate, PorterDuff.Mode.SRC_IN);
-//        editTextPassword.getBackground().setColorFilter(colorOnCreate, PorterDuff.Mode.SRC_IN);
-//        editTextPasswordConfirm.getBackground().setColorFilter(colorOnCreate, PorterDuff.Mode.SRC_IN);
-//        editTextMobilePhone.getBackground().setColorFilter(colorOnCreate, PorterDuff.Mode.SRC_IN);
-//        editTextCertificationNumber.getBackground().setColorFilter(colorOnCreate, PorterDuff.Mode.SRC_IN);
     }
 
     private void setInitView() {
@@ -87,6 +78,5 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        setEditTextLineColor();
     }
 }

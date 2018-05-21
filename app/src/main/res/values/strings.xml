@@ -20,6 +20,9 @@
     <string name="edit">Edit</string>
     <string name="completion">Completion</string>
     <string name="search">Search</string>
+    <string name="count_of_memo">notes</string>
+
+
 
     <!--activity_sign_in-->
     <string name="hint_id">ID</string>
@@ -39,6 +42,26 @@
     <string name="hint_number_authentication">Number authentication</string>
     <string name="hint_certification_number">Authentication confirmation</string>
     <string name="authentication">Authentication</string>
+
+    <!--activity_game-->
+    <string name="game">Game</string>
+    <string name="game_1to50">1to50</string>
+    <string name="game_snake">Snake</string>
+    <string name="game_cancellation">Deselect Game</string>
+
+
+
+    <!--SnakeView-->
+    <string name="mode_ready">Snake\nPress Up To Play</string>
+    <string name="mode_pause">Paused\nPress Up To Resume</string>
+    <string name="mode_lose_prefix">Game Over\nScore: </string>
+    <string name="mode_lose_suffix">\nPress Up To Play</string>
+    <!--<string name="str1">점수: </string>-->
+    <!--<string name="str2"/>-->
+    <!--<string name="str3">속도: </string>-->
+    <!--<string name="str4"/>-->
+
+
 
     <!--Toast-->
     <string name="back_press">Press one more time to exit.</string>

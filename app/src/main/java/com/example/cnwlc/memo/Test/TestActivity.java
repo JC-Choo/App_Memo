@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo;
+package com.example.cnwlc.memo.Test;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.cnwlc.memo.Common.BaseActivity;
+import com.example.cnwlc.memo.R;
 import com.example.cnwlc.memo.Util.sqlite.SQLiteUtil;
 
 

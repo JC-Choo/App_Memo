@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/gameA_relative_layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@null">
+
+        <RelativeLayout
+            android:id="@+id/gameA_relative_layout_back"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@null">
+
+            <ImageView
+                android:id="@+id/gameA_image_view_back"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/arrow_left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/gameA_image_view_back"
+                android:includeFontPadding="false"
+                android:text="@string/game"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/gameA_button_1to50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameA_relative_layout_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/game_1to50"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/gameA_button_snake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameA_button_1to50"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/game_snake"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/gameA_text_view_progressView"
+        android:layout_below="@+id/gameA_button_snake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/gameA_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@+id/gameA_text_view_progressView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:id="@+id/gameA_button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameA_progress_bar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/game_cancellation"
+        android:textColor="@color/black" />
+</RelativeLayout>

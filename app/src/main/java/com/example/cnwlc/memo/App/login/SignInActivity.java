@@ -14,6 +14,10 @@ import com.example.cnwlc.memo.R;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * Created by Bridge on 2018-05-19.
+ */
+
 public class SignInActivity extends BaseActivity {
     @BindView(R.id.SignInA_edit_text_id)
     EditText editTextId;
