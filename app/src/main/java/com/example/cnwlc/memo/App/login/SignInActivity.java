@@ -64,7 +64,6 @@ public class SignInActivity extends BaseActivity {
                 intent = new Intent(SignInActivity.this, SignUpActivity.class);
                 break;
             case R.id.SignInA_button_temporary_login:
-                SharedPreferenceUtil.getInstance().setLoginID("temporary_id");
                 intent = new Intent(SignInActivity.this, MainActivity.class);
                 break;
         }

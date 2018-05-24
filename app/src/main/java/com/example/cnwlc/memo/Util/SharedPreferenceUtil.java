@@ -7,8 +7,16 @@ import com.example.cnwlc.memo.Common.Defines;
 import com.example.cnwlc.memo.MemoApplication;
 
 /**
+<<<<<<< HEAD
+ * Created by Bridge on 2018-05-06.
+ */
+
+
+=======
  * Created by Bridge on 2018-05-24.
  */
+
+>>>>>>> android
 public class SharedPreferenceUtil {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;

@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.Test.recycler2;
+package com.example.cnwlc.memo.App.etc.recycler2;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -1,11 +1,11 @@
-package com.example.cnwlc.memo.Test;
+package com.example.cnwlc.memo.App.etc;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.cnwlc.memo.Test.recycler1.RecyclerFragment1;
-import com.example.cnwlc.memo.Test.recycler2.RecyclerFragment2;
+import com.example.cnwlc.memo.App.etc.recycler1.RecyclerFragment1;
+import com.example.cnwlc.memo.App.etc.recycler2.RecyclerFragment2;
 
 public class SecondViewPagerAdapter extends FragmentStatePagerAdapter {
     private int tabItemCount;

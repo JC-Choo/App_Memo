@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.Test.recycler2;
+package com.example.cnwlc.memo.App.etc.recycler2;
 
 public class RecyclerItem2 {
     private String name;

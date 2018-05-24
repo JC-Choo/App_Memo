@@ -7,16 +7,23 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * Created by Bridge on 2018-05-06.
+ */
+
+=======
+=======
 import com.example.cnwlc.memo.App.main.mvp.MainActivity;
+import com.example.cnwlc.memo.App.main_memo.MemoActivity;
 import com.example.cnwlc.memo.App.splash.SplashActivity;
+>>>>>>> android
 import com.example.cnwlc.memo.Common.Dlog;
 import com.example.cnwlc.memo.Util.SharedPreferenceUtil;
 
 import java.util.Locale;
-
-/**
- * Created by Bridge on 2018-05-24.
- */
+>>>>>>> android
 
 public class MemoApplication extends Application {
     private static MemoApplication instance;
