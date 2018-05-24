@@ -1,29 +1,35 @@
 package com.example.cnwlc.memo.Util;
 
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
+import com.example.cnwlc.memo.Common.Defines;
 import com.example.cnwlc.memo.MemoApplication;
 
 /**
+<<<<<<< HEAD
  * Created by Bridge on 2018-05-06.
  */
 
 
+=======
+ * Created by Bridge on 2018-05-24.
+ */
+
+>>>>>>> android
 public class SharedPreferenceUtil {
-    private static Context context;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
 
-    private SharedPreferenceUtil(Context context) {
-        /**
-         * getSharedPreference("name",0); : 쉐어프리퍼런스 저장 폴더에 name.xml 이름의 파일로 저장이 된다. 다른 이름도 얼마든지 가능
-         * getSharedPreference(0); : 현재 액티비티의 이름으로 xml 파일이 저장
-         * PreferenceManager.getDefaultSharedPreference(this); : 환경설정에 저장된 값으로 쉐어프리퍼런스를 가져오는 방법
+    private SharedPreferenceUtil() {
+        /*
+          getSharedPreference("name",0); : 쉐어프리퍼런스 저장 폴더에 name.xml 이름의 파일로 저장이 된다. 다른 이름도 얼마든지 가능
+          getSharedPreference(0); : 현재 액티비티의 이름으로 xml 파일이 저장
+          PreferenceManager.getDefaultSharedPreference(this); : 환경설정에 저장된 값으로 쉐어프리퍼런스를 가져오는 방법
          */
-        this.context = context;
-//        preferences = PreferenceManager.getDefaultSharedPreferences(ChattingApplication.getInstance());
-        preferences = context.getSharedPreferences(MemoApplication.userId, Context.MODE_PRIVATE);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(MemoApplication.getInstance());
+//        preferences = context.getSharedPreferences(MemoApplication.userId, Context.MODE_PRIVATE);
         editor = preferences.edit();
     }
 
@@ -31,22 +37,34 @@ public class SharedPreferenceUtil {
     private static SharedPreferenceUtil instance;
     public static SharedPreferenceUtil getInstance() {
         if (instance == null)
-            instance = new SharedPreferenceUtil(context);
+            instance = new SharedPreferenceUtil();
 
         return instance;
     }
 
-//    public void setHashKey(String hashkey) {
-//        mEditor.putString(Defines.KEY_HASH_KEY, hashkey);
-//        mEditor.commit();
-//    }
-//
-//    public String getHashKey() {
-//        return mPref.getString(Defines.KEY_HASH_KEY, "");
-//    }
-//
-//    public void clearHashKey() {
-//        mEditor.remove(Defines.KEY_HASH_KEY);
-//        mEditor.apply();
-//    }
+    // Login 시 자동로그인 checkbox 에 대한 set/get/clear
+    public void setLoginCheckBox(boolean loginCheckBox) {
+        editor.putBoolean(Defines.LOGIN_CHECK_BOX, loginCheckBox);
+        editor.commit();
+    }
+    public boolean getLoginCheckBox() {
+        return preferences.getBoolean(Defines.LOGIN_CHECK_BOX, false);
+    }
+    public void clearLoginCheckBox() {
+        editor.remove(Defines.LOGIN_CHECK_BOX);
+        editor.apply();
+    }
+
+    // Login ID 에 대한 set/get/clear
+    public void setLoginID(String loginID) {
+        editor.putString(Defines.LOGIN_ID, loginID);
+        editor.commit();
+    }
+    public String getLoginID() {
+        return preferences.getString(Defines.LOGIN_ID, "");
+    }
+    public void clearLoginID() {
+        editor.remove(Defines.LOGIN_ID);
+        editor.apply();
+    }
 }

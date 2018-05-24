@@ -1,10 +1,8 @@
-package com.example.cnwlc.memo.Util.sqlite.base;
+package com.example.cnwlc.memo.Test.sqlite_test;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.ListView;
-
-import com.example.cnwlc.memo.Util.sqlite.signup.User;
 
 import java.util.List;
 

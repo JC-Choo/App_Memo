@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.example.cnwlc.memo.Common.BaseActivity;
 import com.example.cnwlc.memo.R;
-import com.example.cnwlc.memo.Util.sqlite.base.SQLiteUtil;
+import com.example.cnwlc.memo.Test.sqlite_test.SQLiteUtil;
 
 
 /**

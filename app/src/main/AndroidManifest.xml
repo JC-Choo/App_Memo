@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!--android:name=".App.splash.SplashActivity"-->
-        <activity android:name=".Test.TestActivity"
+        <activity android:name=".App.splash.SplashActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

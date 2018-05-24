@@ -21,7 +21,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="10dp">
 
             <EditText
@@ -72,6 +72,7 @@
             android:id="@+id/SignInA_button_join_membership"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/custom_button"
             android:text="@string/sign_up"
             android:textColor="@color/black" />

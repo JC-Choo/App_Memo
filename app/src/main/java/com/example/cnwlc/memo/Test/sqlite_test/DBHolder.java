@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.Util.sqlite.base;
+package com.example.cnwlc.memo.Test.sqlite_test;
 
 import android.widget.TextView;
 
