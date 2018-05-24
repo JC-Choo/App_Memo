@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity {
 //        recyclerView.setHasFixedSize(true);
 //        recyclerView.setLayoutManager(linearLayoutManager);
 
-        PermissionUtil.getInstance().PermissionUtil(context, recyclerView);
+        PermissionUtil.getInstance().setInitValue(context, recyclerView);
         PermissionUtil.getInstance().showPermission();
 
         List<Item> items = new ArrayList<Item>();
