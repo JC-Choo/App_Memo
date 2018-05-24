@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.etc;
+package com.example.cnwlc.memo.Test;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

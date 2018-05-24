@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.etc.recycler2;
+package com.example.cnwlc.memo.Test.recycler2;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
