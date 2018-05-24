@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.Util.sqlite.base;
+package com.example.cnwlc.memo.Test.sqlite_test;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = Defines.CODE_1;
-    
+
     private Activity context;
     private String dataBaseName;
     private int dataBaseVersion;

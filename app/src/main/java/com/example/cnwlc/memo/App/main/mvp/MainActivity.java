@@ -16,8 +16,11 @@ import com.example.cnwlc.memo.App.main.MainItem;
 import com.example.cnwlc.memo.App.main.MainRecyclerAdapter;
 import com.example.cnwlc.memo.App.main_memo.MemoActivity;
 import com.example.cnwlc.memo.Common.BaseActivity;
+import com.example.cnwlc.memo.Common.Defines;
+import com.example.cnwlc.memo.Common.Dlog;
 import com.example.cnwlc.memo.R;
 import com.example.cnwlc.memo.Util.PermissionUtil;
+import com.example.cnwlc.memo.Util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-21.
+ * Created by Bridge on 2018-05-24.
  */
 
 public class MainActivity extends BaseActivity implements MainContract.View {
@@ -45,8 +48,12 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = MainActivity.this;
+
         presenter = new MainPresenter(this, context);
         presenter.start();
+
+        Dlog.i("userID : "+ SharedPreferenceUtil.getInstance().getLoginID());
+        Dlog.i("LoginCheckBox : "+ SharedPreferenceUtil.getInstance().getLoginCheckBox());
 
         initView();
     }
@@ -99,7 +106,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Override
     public void showPermissionDialog() {
-        PermissionUtil.getInstance().setInitValue(context, recyclerView);
-        PermissionUtil.getInstance().showPermission();
+//        PermissionUtil.getInstance().setInitValue(context, recyclerView);
+//        PermissionUtil.getInstance().showPermission();
     }
 }

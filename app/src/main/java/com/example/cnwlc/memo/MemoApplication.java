@@ -2,24 +2,28 @@ package com.example.cnwlc.memo;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 
+import com.example.cnwlc.memo.App.main.mvp.MainActivity;
+import com.example.cnwlc.memo.App.main_memo.MemoActivity;
+import com.example.cnwlc.memo.App.splash.SplashActivity;
 import com.example.cnwlc.memo.Common.Dlog;
+import com.example.cnwlc.memo.Util.SharedPreferenceUtil;
 
 import java.util.Locale;
 
 public class MemoApplication extends Application {
     private static MemoApplication instance;
     public static MemoApplication getInstance() {
-        if(instance == null)
+        if (instance == null)
             instance = new MemoApplication();
 
         return instance;
     }
 
-    public static String userId;
     public static boolean DEBUG;
 
     @Override
@@ -27,6 +31,8 @@ public class MemoApplication extends Application {
         super.onCreate();
 
         instance = this;
+
+        setInitView();
 
         this.DEBUG = isDebuggable(this);
     }
@@ -41,15 +47,16 @@ public class MemoApplication extends Application {
         super.onConfigurationChanged(newConfig);
     }
 
-    public void getSystemLanguage() {
-        Locale systemLocale = getApplicationContext().getResources().getConfiguration().locale;
-        String strDisplayCountry = systemLocale.getDisplayCountry(); // 대한민국
-        String strCountry = systemLocale.getCountry(); // KR
-        String strLanguage = systemLocale.getLanguage(); // ko
+    private void setInitView() {
+        Intent intent = null;
 
-        Dlog.d("strDisplayCountry : "+strDisplayCountry);
-        Dlog.d("strCountry : "+strCountry);
-        Dlog.d("strLanguage : "+strLanguage);
+        if (SharedPreferenceUtil.getInstance().getLoginCheckBox())
+            intent = new Intent(this, MainActivity.class);
+        else
+            intent = new Intent(this, SplashActivity.class);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     // 현재 디버그모드여부를 리턴
@@ -58,12 +65,23 @@ public class MemoApplication extends Application {
 
         PackageManager pm = context.getPackageManager();
         try {
-            ApplicationInfo appinfo = pm.getApplicationInfo(context.getPackageName(), 0);
-            debuggable = (0 != (appinfo.flags & ApplicationInfo.FLAG_DEBUGGABLE));
+            ApplicationInfo applicationInfo = pm.getApplicationInfo(context.getPackageName(), 0);
+            debuggable = (0 != (applicationInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE));
         } catch (PackageManager.NameNotFoundException e) {
             /* debuggable variable will remain false */
         }
 
         return debuggable;
+    }
+
+    public void getSystemLanguage() {
+        Locale systemLocale = getApplicationContext().getResources().getConfiguration().locale;
+        String strDisplayCountry = systemLocale.getDisplayCountry(); // 대한민국
+        String strCountry = systemLocale.getCountry(); // KR
+        String strLanguage = systemLocale.getLanguage(); // ko
+
+        Dlog.i("strDisplayCountry : " + strDisplayCountry);
+        Dlog.i("strCountry : " + strCountry);
+        Dlog.i("strLanguage : " + strLanguage);
     }
 }
