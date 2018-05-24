@@ -1,7 +1,10 @@
 package com.example.cnwlc.memo.App.main_memo;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,32 +16,49 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.cnwlc.memo.App.main.mvp.MainActivity;
 import com.example.cnwlc.memo.Common.Defines;
 import com.example.cnwlc.memo.R;
+import com.example.cnwlc.memo.Util.DateUtil;
+import com.example.cnwlc.memo.Util.ToastUtil;
+import com.example.cnwlc.memo.Util.sqlite.SQLiteUtil;
+
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 /**
- * Created by Bridge on 2018-05-21.
+ * Created by Bridge on 2018-05-24.
  */
 
 public class FragmentWrite extends Fragment {
-    @BindView(R.id.write_edit_text_content)
+    @BindView(R.id.writeF_text_view_time)
+    TextView textViewTime;
+    @BindView(R.id.writeF_edit_text_content)
     EditText editTextContent;
-    @BindView(R.id.write_image_view_1)
+    @BindView(R.id.writeF_image_view_1)
     ImageView imageView1;
-    @BindView(R.id.write_image_view_2)
+    @BindView(R.id.writeF_image_view_2)
     ImageView imageView2;
-    @BindView(R.id.write_image_view_3)
+    @BindView(R.id.writeF_image_view_3)
     ImageView imageView3;
 
     private Bitmap photo;
     private String selectedImagePath;
+
+    private onListener mOnListener;
+    public interface onListener {
+        void onReceivedData(String content, String imagePath);
+    }
 
     public static FragmentWrite newInstance() {
         FragmentWrite fragment = new FragmentWrite();
@@ -47,9 +67,21 @@ public class FragmentWrite extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_write, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_memo_write, container, false);
         ButterKnife.bind(this, rootView);
+
+        editTextContent.requestFocus();
+        textViewTime.setText(DateUtil.getCurrentTimeYMDAHM());
+
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(getActivity() != null && getActivity() instanceof onListener) {
+            mOnListener = (onListener) getActivity();
+        }
     }
 
     @Override
@@ -58,11 +90,33 @@ public class FragmentWrite extends Fragment {
 
     }
 
-    @OnClick({R.id.writeA_floating_action_menu_item_camera, R.id.writeA_floating_action_menu_item_gallery, R.id.writeA_floating_action_menu_item_draw})
+    @OnClick({R.id.writeF_relative_layout_back, R.id.writeF_text_view_completion,
+            R.id.writeF_floating_action_menu_item_camera, R.id.writeF_floating_action_menu_item_gallery, R.id.writeF_floating_action_menu_item_draw})
     public void onClickMethod(View v) {
-        Intent intent = null;
+        Fragment fragment = null;
+        Intent intent;
+
         switch (v.getId()) {
-            case R.id.writeA_floating_action_menu_item_camera:
+            case R.id.writeF_relative_layout_back :
+                intent = new Intent(getActivity(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                break;
+            case R.id.writeF_text_view_completion :
+                if(editTextContent.getText().toString().equals("")) {
+                    ToastUtil.shortToast(getActivity(), "메시지를 입력하세요.");
+                } else {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+
+                    SQLiteUtil.getInstance().setInintView(getActivity(), Defines.DATABASE_MEMO);
+                    SQLiteUtil.getInstance().insert(DateUtil.getCurrentTimeYMDAHM(), editTextContent.getText().toString(), selectedImagePath);
+                    SQLiteUtil.getInstance().selectAll();
+
+                    fragment = new FragmentRead();
+                }
+                break;
+            case R.id.writeF_floating_action_menu_item_camera:
                 intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);    // 안드로이드 카메라 가이드
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
                 try {
@@ -72,17 +126,24 @@ public class FragmentWrite extends Fragment {
                     // Do nothing for now
                 }
                 break;
-            case R.id.writeA_floating_action_menu_item_gallery:
+            case R.id.writeF_floating_action_menu_item_gallery:
                 intent = new Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
                 //사진을 여러개 선택할수 있도록 한다
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 intent.setType("image/*");
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), Defines.CODE_1);
                 break;
-            case R.id.writeA_floating_action_menu_item_draw:
+            case R.id.writeF_floating_action_menu_item_draw:
 //                intent = new Intent(this, DrawActivity.class);
 //                startActivityForResult(intent, Defines.CODE_2);
                 break;
+        }
+
+        if(fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace( R.id.memoA_frame_layout, fragment );
+            fragmentTransaction.commit();
         }
     }
 

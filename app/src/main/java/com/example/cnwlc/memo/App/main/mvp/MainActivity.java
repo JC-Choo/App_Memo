@@ -52,9 +52,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         presenter = new MainPresenter(this, context);
         presenter.start();
 
-        Dlog.i("userID : "+ SharedPreferenceUtil.getInstance().getLoginID());
-        Dlog.i("LoginCheckBox : "+ SharedPreferenceUtil.getInstance().getLoginCheckBox());
-
         initView();
     }
 
