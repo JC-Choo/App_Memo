@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.game;
+package com.example.cnwlc.memo.App.etc.game.one;
 
 public class OneToFifty_StopWatch {
     private long startTime = 0;

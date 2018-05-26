@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.game;
+package com.example.cnwlc.memo.App.etc.game;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.cnwlc.memo.App.etc.game.one.OneToFifty;
+import com.example.cnwlc.memo.App.etc.game.snake.Snake;
 import com.example.cnwlc.memo.R;
 
 import butterknife.BindView;

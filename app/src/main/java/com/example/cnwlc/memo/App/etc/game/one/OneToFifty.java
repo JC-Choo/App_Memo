@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.game;
+package com.example.cnwlc.memo.App.etc.game.one;
 
 import android.app.Activity;
 import android.content.res.Resources;

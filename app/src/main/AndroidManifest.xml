@@ -42,21 +42,21 @@
             android:screenOrientation="portrait" />
 
 
-        <activity android:name=".App.alarm.AlarmMain"
+        <activity android:name=".App.etc.alarm.AlarmMain"
             android:screenOrientation="portrait" />
-        <activity android:name=".App.game.Timer_CountDown"
+        <activity android:name=".App.etc.Timer_CountDown"
             android:screenOrientation="portrait" />
-        <activity android:name=".App.game.OneToFifty"
+        <activity android:name=".App.etc.game.one.OneToFifty"
             android:screenOrientation="portrait" />
-        <activity android:name=".App.game.GameActivity"
+        <activity android:name=".App.etc.game.GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".App.game.Snake"
+            android:name=".App.etc.game.snake.Snake"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
-        <receiver android:name=".App.alarm.AlarmReceive" />
+        <receiver android:name=".App.etc.alarm.AlarmReceive" />
 
 
         <!--테스트 화면-->

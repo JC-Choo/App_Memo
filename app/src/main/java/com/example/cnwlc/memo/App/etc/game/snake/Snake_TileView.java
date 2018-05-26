@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.game;
+package com.example.cnwlc.memo.App.etc.game.snake;
 
 import android.content.Context;
 import android.content.res.TypedArray;
