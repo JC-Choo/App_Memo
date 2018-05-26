@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.alarm;
+package com.example.cnwlc.memo.App.etc.alarm;
 
 import android.app.Activity;
 import android.app.AlarmManager;

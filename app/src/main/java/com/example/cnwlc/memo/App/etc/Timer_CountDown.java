@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.game;
+package com.example.cnwlc.memo.App.etc;
 
 import android.app.Activity;
 import android.content.Context;

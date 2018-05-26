@@ -1,4 +1,4 @@
-package com.example.cnwlc.memo.App.game;
+package com.example.cnwlc.memo.App.etc.game.snake;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
