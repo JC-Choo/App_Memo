@@ -37,7 +37,7 @@ import butterknife.OnClick;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
- * Created by Bridge on 2018-05-24.
+ * Created by Bridge on 2018-05-28.
  */
 
 public class FragmentWrite extends Fragment {
@@ -109,7 +109,7 @@ public class FragmentWrite extends Fragment {
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
 
-                    SQLiteUtil.getInstance().setInintView(getActivity(), Defines.DATABASE_MEMO);
+                    SQLiteUtil.getInstance().setInintView(getActivity(), Defines.TABLE_MEMO);
                     SQLiteUtil.getInstance().insert(DateUtil.getCurrentTimeYMDAHM(), editTextContent.getText().toString(), selectedImagePath);
                     SQLiteUtil.getInstance().selectAll();
 
@@ -200,10 +200,8 @@ public class FragmentWrite extends Fragment {
             }
         }
     }
-
-
     // 사진의 URI 경로를 받는 메소드
-    public String getPath(Uri uri) {
+    private String getPath(Uri uri) {
         // uri가 null일경우 null반환
         if (uri == null) {
             return null;

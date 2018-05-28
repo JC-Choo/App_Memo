@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-24.
+ * Created by Bridge on 2018-05-28.
  */
 
 public class SignUpActivity extends AppCompatActivity {
@@ -52,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
             editTextId.setInputType(InputType.TYPE_CLASS_TEXT);
         }
 
-        SQLiteUtil.getInstance().setInintView(this, Defines.DATABASE_USER);
+        SQLiteUtil.getInstance().setInintView(this, Defines.TABLE_USER);
     }
 
     @OnClick({R.id.SignUpA_relative_layout_back, R.id.SignUpA_button_id_check, R.id.SignUpA_button_certification_number,

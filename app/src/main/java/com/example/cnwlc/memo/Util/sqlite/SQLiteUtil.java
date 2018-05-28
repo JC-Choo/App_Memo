@@ -10,8 +10,11 @@ import com.example.cnwlc.memo.Common.Defines;
 import com.example.cnwlc.memo.Common.Dlog;
 import com.example.cnwlc.memo.Util.SharedPreferenceUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by Bridge on 2018-05-24.
+ * Created by Bridge on 2018-05-28.
  */
 
 public class SQLiteUtil {
@@ -46,15 +49,15 @@ public class SQLiteUtil {
     public void insert(String first, String second, String third) {
         ContentValues values = new ContentValues();
         // 키,값의 쌍으로 데이터 입력
-        if(tableName.equals(Defines.DATABASE_USER)) {
-            values.put("id", first);
-            values.put("password", second);
-            values.put("cellphone", third);
-        } else if(tableName.equals(Defines.DATABASE_MEMO)) {
-            values.put("id", SharedPreferenceUtil.getInstance().getLoginID());
-            values.put("time", first);
-            values.put("content", second);
-            values.put("image_path", third);
+        if(tableName.equals(Defines.TABLE_USER)) {
+            values.put(Defines.ID, first);
+            values.put(Defines.PASSWORD, second);
+            values.put(Defines.CELLPHONE, third);
+        } else if(tableName.equals(Defines.TABLE_MEMO)) {
+            values.put(Defines.ID, SharedPreferenceUtil.getInstance().getLoginID());
+            values.put(Defines.TIME, first);
+            values.put(Defines.CONTENT, second);
+            values.put(Defines.IMAGE_PATH, third);
         }
 
         long result = sqLiteDatabase.insert(tableName, null, values);
@@ -70,14 +73,14 @@ public class SQLiteUtil {
     public void update(String first, String second, String third) {
         // 해당 _no 가져와서 _no 에 맞는 값을 변경하게끔 수정
         ContentValues values = new ContentValues();
-        values.put("id", SharedPreferenceUtil.getInstance().getLoginID());
-        values.put("time", first);
-        values.put("content", second);
-        values.put("image_path", third);
+        values.put(Defines.ID, SharedPreferenceUtil.getInstance().getLoginID());
+        values.put(Defines.TIME, first);
+        values.put(Defines.CONTENT, second);
+        values.put(Defines.IMAGE_PATH, third);
 
         int result = sqLiteDatabase.update(tableName,
                 values,    // 뭐라고 변경할지 ContentValues 설정
-                "id=?", // 바꿀 항목을 찾을 조건절
+                "ID=?", // 바꿀 항목을 찾을 조건절
                 new String[]{SharedPreferenceUtil.getInstance().getLoginID()});// 바꿀 항목으로 찾을 값 String 배열
 
         Dlog.i(tableName+" "+result + "번째 row update 성공했음");
@@ -100,9 +103,53 @@ public class SQLiteUtil {
         return Defines.CODE_401;
     }
 
+    // MainA에서 클릭을 통해 Shared에 저장한 id와 메모 번호를 SQLite 의 data 와 비교하기 위한 method
+    public String selectMemoRead(int position) {
+        Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
+
+        while (c.moveToNext()) {
+            int _no = c.getInt(0);
+            String id = c.getString(1);
+            String time = c.getString(2);
+            String content = c.getString(3);
+            String imagePath = c.getString(4);
+
+
+            if( _no == position && id.equals(SharedPreferenceUtil.getInstance().getLoginID()) ) {
+                Dlog.i(tableName+" _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                return time+"|"+content+"|"+imagePath;
+            }
+        }
+
+        return String.valueOf(Defines.CODE_401);
+    }
+
+    // MainA에서 Shared 에 저장한 id에 맞는 memo 를 보여주기 위해 SQLite 의 data 와 비교하기 위한 method
+    public List<String> selectMemoAll() {
+        Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
+
+        List<String> userMemo = new ArrayList<>();
+
+        while (c.moveToNext()) {
+            int _no = c.getInt(0);
+            String id = c.getString(1);
+            String time = c.getString(2);
+            String content = c.getString(3);
+            String imagePath = c.getString(4);
+
+
+            if( id.equals(SharedPreferenceUtil.getInstance().getLoginID()) ) {
+                Dlog.i(tableName+" _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                userMemo.add(time + "|" + content + "|" + imagePath);
+            }
+        }
+
+        return userMemo;
+    }
+
     public void selectAll() {
         Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
-        if(tableName.equals(Defines.DATABASE_USER)) {
+        if(tableName.equals(Defines.TABLE_USER)) {
             while (c.moveToNext()) {
                 int _no = c.getInt(0);
                 String id = c.getString(1);
@@ -111,7 +158,7 @@ public class SQLiteUtil {
 
                 Dlog.i(tableName+" _no : " + _no + ", id : " + id + ", password : " + password + ", cellphone : " + cellphone);
             }
-        } else if(tableName.equals(Defines.DATABASE_MEMO)) {
+        } else if(tableName.equals(Defines.TABLE_MEMO)) {
             while (c.moveToNext()) {
                 int _no = c.getInt(0);
                 String id = c.getString(1);

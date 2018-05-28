@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.cnwlc.memo.App.main.MainItem;
 import com.example.cnwlc.memo.App.main.MainRecyclerAdapter;
+import com.example.cnwlc.memo.App.main.RecyclerItemClickListener;
 import com.example.cnwlc.memo.App.main_memo.MemoActivity;
 import com.example.cnwlc.memo.Common.BaseActivity;
 import com.example.cnwlc.memo.Common.Defines;
@@ -29,7 +30,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-24.
+ * Created by Bridge on 2018-05-28.
  */
 
 public class MainActivity extends BaseActivity implements MainContract.View {
@@ -71,6 +72,21 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         MainRecyclerAdapter mainRecyclerAdapter = new MainRecyclerAdapter(presenter.setData(mainItemList));
         recyclerView.setAdapter(mainRecyclerAdapter);
 
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(MainActivity.this, MemoActivity.class);
+                        intent.putExtra(Defines.MAIN_TO_MEMO, Defines.READ);
+                        intent.putExtra(Defines.THE_NUMBER_OF_MEMO, position);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        Dlog.d("Long_Click_Event");
+                    }
+                }));
+
         textViewNumberOfMemos.setText(mainRecyclerAdapter.getItemCount()+getString(R.string.count_of_memo));
     }
 
@@ -85,6 +101,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 break;
             case R.id.mainA_image_view_add_memo :
                 intent = new Intent(MainActivity.this, MemoActivity.class);
+                intent.putExtra(Defines.MAIN_TO_MEMO, Defines.WRITE);
                 break;
             case R.id.mainA_text_view_edit :
                 Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();
