@@ -14,50 +14,43 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/memo_item_textView_title"
+        android:id="@+id/memo_item_textView_content"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_toEndOf="@+id/memo_item_imageView"
-        android:layout_toStartOf="@+id/memo_item_linear"
         android:gravity="center"
         android:singleLine="true"
         android:text="@string/title"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
-    <LinearLayout
-        android:id="@+id/memo_item_linear"
+    <TextView
+        android:id="@+id/memo_item_textView_time"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="vertical"
-        android:layout_alignParentEnd="true">
+        android:layout_height="20dp"
+        android:layout_below="@+id/memo_item_textView_content"
+        android:layout_toEndOf="@+id/memo_item_imageView"
+        android:text="@string/test"
+        android:textColor="@color/gray"
+        android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/memo_item_textView_import"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right|center"
-            android:textColor="@color/gray"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/memo_item_textView_daily"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right|center"
-            android:textColor="@color/gray"
-            android:textSize="10sp" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/memo_item_textView_etc"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/memo_item_textView_content"
+        android:layout_toEndOf="@+id/memo_item_textView_time"
+        android:text="@string/test"
+        android:textColor="@color/silver"
+        android:textSize="12sp" />
 
     <!--<CheckBox-->
-        <!--android:id="@+id/invite_checkbox"-->
-        <!--android:layout_width="30dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:button="@android:color/transparent"-->
-        <!--android:background="@drawable/custom_check_box"-->
-        <!--android:layout_toEndOf="@+id/memo_item_linear"/>-->
+    <!--android:id="@+id/invite_checkbox"-->
+    <!--android:layout_width="30dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:button="@android:color/transparent"-->
+    <!--android:background="@drawable/custom_check_box"-->
+    <!--android:layout_toEndOf="@+id/memo_item_linear"/>-->
 
 </RelativeLayout>

@@ -1,41 +1,41 @@
 package com.example.cnwlc.memo.App.main;
 
 /**
- * Created by Bridge on 2018-05-16.
+ * Created by Bridge on 2018-05-28.
  */
 
 public class MainItem {
-    private String title;
-    private String daily;
-    private String importance;
+    private String content;
+    private String time;
+    private String etc;
 
-    public MainItem(String title, String daily, String importance) {
-        this.title = title;
-        this.daily = daily;
-        this.importance = importance;
+    public MainItem(String content, String time, String etc) {
+        this.content = content;
+        this.time = time;
+        this.etc = etc;
     }
 
-    public String getTitle() {
-        return title;
+    public String getContent() {
+        return content;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getDaily() {
-        return daily;
+    public String getTime() {
+        return time;
     }
 
-    public void setDaily(String daily) {
-        this.daily = daily;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getImportance() {
-        return importance;
+    public String getEtc() {
+        return etc;
     }
 
-    public void setImportance(String importance) {
-        this.importance = importance;
+    public void setEtc(String etc) {
+        this.etc = etc;
     }
 }

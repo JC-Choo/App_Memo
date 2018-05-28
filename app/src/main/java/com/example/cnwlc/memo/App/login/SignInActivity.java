@@ -21,7 +21,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-24.
+ * Created by Bridge on 2018-05-28.
  */
 
 public class SignInActivity extends BaseActivity {
@@ -48,7 +48,7 @@ public class SignInActivity extends BaseActivity {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.SignInA_button_login:
-                SQLiteUtil.getInstance().setInintView(this, Defines.DATABASE_USER);
+                SQLiteUtil.getInstance().setInintView(this, Defines.TABLE_USER);
                 int result = SQLiteUtil.getInstance().selectLogin(editTextId.getText().toString(), editTextPassword.getText().toString());
                 Dlog.i("result_code = " + result);
                 SQLiteUtil.getInstance().selectAll();
