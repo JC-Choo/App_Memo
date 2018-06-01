@@ -1,9 +1,9 @@
 package com.example.cnwlc.memo.App.main_memo;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,13 @@ import com.example.cnwlc.memo.App.main.mvp.MainActivity;
 import com.example.cnwlc.memo.Common.Defines;
 import com.example.cnwlc.memo.Common.Dlog;
 import com.example.cnwlc.memo.R;
-import com.example.cnwlc.memo.Util.DateUtil;
-import com.example.cnwlc.memo.Util.sqlite.SQLiteUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-28.
+ * Created by Bridge on 2018-06-01.
  */
 
 public class FragmentRead extends Fragment {
@@ -30,9 +28,21 @@ public class FragmentRead extends Fragment {
     @BindView(R.id.readF_edit_text_content)
     TextView textViewContent;
 
-    public static FragmentRead newInstance() {
+    private String time, content, imagePath;
+
+    public static FragmentRead newInstance(String time, String content, String imagePath) {
         FragmentRead fragment = new FragmentRead();
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments() != null) {
+            time = getArguments().getString(Defines.MEMO_TIME);
+            content = getArguments().getString(Defines.MEMO_CONTENT);
+            imagePath = getArguments().getString(Defines.MEMO_IMAGE_PATH);
+        }
     }
 
     @Override
@@ -40,11 +50,12 @@ public class FragmentRead extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_memo_read, container, false);
         ButterKnife.bind(this, rootView);
 
-//        int position = getArguments().getInt(Defines.POSITION);
-//        Dlog.i("Position______"+position);
+        Dlog.i("time______"+time);
+        Dlog.i("content______"+content);
+        Dlog.i("imagePath______"+imagePath);
 
-//        SQLiteUtil.getInstance().setInintView(getActivity(), Defines.TABLE_MEMO);
-//        SQLiteUtil.getInstance().selectMemoRead(position);
+        textViewTime.setText(time);
+        textViewContent.setText(content);
 
         return rootView;
     }

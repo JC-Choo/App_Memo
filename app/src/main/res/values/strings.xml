@@ -85,4 +85,5 @@
     <string name="SQLiteUtil_enter_cellphone">Please enter your mobile phone number.</string>
     <string name="SignUpActivity_please_enter_your_phone_number">Please enter your phone number.</string>
     <string name="SignUpActivity_authentication_number">Authentication number</string>
+    <string name="FragmentWrite_please_enter_a_message">Please enter a message.</string>
 </resources>

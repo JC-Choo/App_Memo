@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-05-28.
+ * Created by Bridge on 2018-06-01.
  */
 
 public class SQLiteUtil {
@@ -115,8 +115,8 @@ public class SQLiteUtil {
             String imagePath = c.getString(4);
 
 
-            if( _no == position && id.equals(SharedPreferenceUtil.getInstance().getLoginID()) ) {
-                Dlog.i(tableName+" _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+            if( _no == (position+1) ) {
+                Dlog.i(tableName+" selectMemoRead _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
                 return time+"|"+content+"|"+imagePath;
             }
         }
@@ -139,7 +139,7 @@ public class SQLiteUtil {
 
 
             if( id.equals(SharedPreferenceUtil.getInstance().getLoginID()) ) {
-                Dlog.i(tableName+" _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                Dlog.i(tableName+" selectMemoAll _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
                 userMemo.add(time + "|" + content + "|" + imagePath);
             }
         }
@@ -156,7 +156,7 @@ public class SQLiteUtil {
                 String password = c.getString(2);
                 String cellphone = c.getString(3);
 
-                Dlog.i(tableName+" _no : " + _no + ", id : " + id + ", password : " + password + ", cellphone : " + cellphone);
+                Dlog.i(tableName+" selectAll _no : " + _no + ", id : " + id + ", password : " + password + ", cellphone : " + cellphone);
             }
         } else if(tableName.equals(Defines.TABLE_MEMO)) {
             while (c.moveToNext()) {
@@ -166,7 +166,7 @@ public class SQLiteUtil {
                 String content = c.getString(3);
                 String imagePath = c.getString(4);
 
-                Dlog.i(tableName+" _no : " + _no + ", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                Dlog.i(tableName+" selectAll _no : " + _no + ", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
             }
         }
     }
