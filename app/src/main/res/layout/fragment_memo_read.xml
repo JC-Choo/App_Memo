@@ -48,6 +48,7 @@
         android:layout_below="@+id/readF_relative_layout_title">
 
         <RelativeLayout
+            android:id="@+id/readF_relative_layout_memo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
@@ -68,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/readF_text_view_time"
                 android:background="@null"
-                android:text="@string/test"
+                android:text="@string/memo"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 

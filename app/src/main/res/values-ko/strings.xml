@@ -75,6 +75,12 @@
 
 
 
+    <!--PermissionUtil-->
+    <string name="request_permission_title">권한 요청</string>
+    <string name="request_permission_content">메모 시 사진을 가져와 함께 저장하기 위한 카메라 권한을 요청합니다.</string>
+
+
+
     <!--Toast-->
     <string name="back_press">한 번 더 누르면 종료됩니다.</string>
     <string name="DBHelper_make_table">테이블이 생성되었습니다.</string>

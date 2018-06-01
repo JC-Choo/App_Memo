@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/writeF_text_view_time"
                 android:background="@null"
-                android:hint="@string/search"
+                android:hint="@string/memo"
                 android:textColor="@color/black"
                 android:textColorHint="@color/silver"
                 android:textSize="18sp" />
