@@ -37,7 +37,7 @@ import butterknife.OnClick;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
- * Created by Bridge on 2018-05-28.
+ * Created by Bridge on 2018-06-01.
  */
 
 public class FragmentWrite extends Fragment {
@@ -53,12 +53,12 @@ public class FragmentWrite extends Fragment {
     ImageView imageView3;
 
     private Bitmap photo;
-    private String selectedImagePath;
+    private String currentDate, selectedImagePath;
 
-    private onListener mOnListener;
-    public interface onListener {
-        void onReceivedData(String content, String imagePath);
-    }
+//    private onListener mOnListener;
+//    public interface onListener {
+//        void onReceivedData(String content, String imagePath);
+//    }
 
     public static FragmentWrite newInstance() {
         FragmentWrite fragment = new FragmentWrite();
@@ -70,19 +70,21 @@ public class FragmentWrite extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_memo_write, container, false);
         ButterKnife.bind(this, rootView);
 
+        currentDate = DateUtil.getCurrentTimeYMDAHM();
+
         editTextContent.requestFocus();
-        textViewTime.setText(DateUtil.getCurrentTimeYMDAHM());
+        textViewTime.setText(currentDate);
 
         return rootView;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if(getActivity() != null && getActivity() instanceof onListener) {
-            mOnListener = (onListener) getActivity();
-        }
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if(getActivity() != null && getActivity() instanceof onListener) {
+//            mOnListener = (onListener) getActivity();
+//        }
+//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -104,7 +106,7 @@ public class FragmentWrite extends Fragment {
                 break;
             case R.id.writeF_text_view_completion :
                 if(editTextContent.getText().toString().equals("")) {
-                    ToastUtil.shortToast(getActivity(), "메시지를 입력하세요.");
+                    ToastUtil.shortToast(getActivity(), getString(R.string.FragmentWrite_please_enter_a_message));
                 } else {
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
@@ -114,6 +116,11 @@ public class FragmentWrite extends Fragment {
                     SQLiteUtil.getInstance().selectAll();
 
                     fragment = new FragmentRead();
+                    Bundle bundle = new Bundle();
+                    bundle.putString(Defines.MEMO_TIME, currentDate);
+                    bundle.putString(Defines.MEMO_CONTENT, editTextContent.getText().toString());
+                    bundle.putString(Defines.MEMO_IMAGE_PATH, selectedImagePath);
+                    fragment.setArguments(bundle);
                 }
                 break;
             case R.id.writeF_floating_action_menu_item_camera:

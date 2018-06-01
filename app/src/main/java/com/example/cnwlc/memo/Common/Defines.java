@@ -14,6 +14,9 @@ public class Defines {
     // BUNDLE KEY
     public final static String PAGE_NUMBER = "PAGE_NUMBER";
     public final static String POSITION = "POSITION";
+    public final static String MEMO_TIME = "MEMO_TIME";
+    public final static String MEMO_CONTENT = "MEMO_CONTENT";
+    public final static String MEMO_IMAGE_PATH = "MEMO_IMAGE_PATH";
 
     // DATABASE NAME, TABLE NAME
     public final static String DATABASE_NAME = "MEMO_APPLICATION.db";
