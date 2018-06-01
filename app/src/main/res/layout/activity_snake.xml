@@ -39,7 +39,7 @@
         android:layout_weight="7"
         android:background="#ff000000">
 
-        <com.example.cnwlc.project_memo.SnakeView
+        <com.choo.application.project_memo.SnakeView
             android:id="@+id/snake"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

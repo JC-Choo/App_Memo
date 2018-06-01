@@ -1,0 +1,131 @@
+package com.choo.application.memo.App.main.mvp;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.choo.application.memo.App.main.MainItem;
+import com.choo.application.memo.App.main.MainRecyclerAdapter;
+import com.choo.application.memo.App.main.RecyclerItemClickListener;
+import com.choo.application.memo.App.main_memo.MemoActivity;
+import com.choo.application.memo.Common.BaseActivity;
+import com.choo.application.memo.Common.Defines;
+import com.choo.application.memo.Common.Dlog;
+import com.choo.application.memo.R;
+import com.choo.application.memo.Util.PermissionUtil;
+import com.choo.application.memo.Util.SharedPreferenceUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
+/**
+ * Created by Bridge on 2018-06-01.
+ */
+
+public class MainActivity extends BaseActivity implements MainContract.View {
+
+    @BindView(R.id.mainA_recycler_view)
+    RecyclerView recyclerView;
+    @BindView(R.id.mainA_text_view_number_of_memos)
+    TextView textViewNumberOfMemos;
+
+    private Activity context;
+    private InputMethodManager inputMethodManager;
+
+    private MainPresenter presenter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = MainActivity.this;
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        initView();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void initView() {
+        presenter = new MainPresenter(this, context);
+        presenter.start();
+
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        List<MainItem> mainItemList = new ArrayList<>();
+        MainRecyclerAdapter mainRecyclerAdapter = new MainRecyclerAdapter(presenter.setData(mainItemList));
+        recyclerView.setAdapter(mainRecyclerAdapter);
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(MainActivity.this, MemoActivity.class);
+                        intent.putExtra(Defines.MAIN_TO_MEMO, Defines.READ);
+                        intent.putExtra(Defines.THE_NUMBER_OF_MEMO, position);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        Dlog.d("Long_Click_Event");
+                    }
+                }));
+
+        textViewNumberOfMemos.setText(mainRecyclerAdapter.getItemCount()+getString(R.string.count_of_memo));
+    }
+
+    @OnClick({R.id.mainA_relative_layout_back, R.id.mainA_image_view_add_memo,
+            R.id.mainA_text_view_edit, R.id.mainA_text_view_search})
+    public void onClickedSecond(View v) {
+        Intent intent = null;
+
+        switch (v.getId()) {
+            case R.id.mainA_relative_layout_back :
+                Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.mainA_image_view_add_memo :
+                intent = new Intent(MainActivity.this, MemoActivity.class);
+                intent.putExtra(Defines.MAIN_TO_MEMO, Defines.WRITE);
+                break;
+            case R.id.mainA_text_view_edit :
+                Toast.makeText(getApplicationContext(), "wait...", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.mainA_text_view_search :
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+                break;
+        }
+
+        if(intent != null)
+            startActivity(intent);
+    }
+
+    @Override
+    public void setPresenter(MainContract.Presenter presenter) { }
+
+    @Override
+    public void showPermissionDialog() {
+//        PermissionUtil.getInstance().setInitValue(context, recyclerView);
+//        PermissionUtil.getInstance().showPermission();
+    }
+}
