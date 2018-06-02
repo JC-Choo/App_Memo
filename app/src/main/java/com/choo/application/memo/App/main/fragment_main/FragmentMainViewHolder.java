@@ -1,4 +1,4 @@
-package com.choo.application.memo.App.main;
+package com.choo.application.memo.App.main.fragment_main;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
  * Created by Bridge on 2018-05-28.
  */
 
-public class MainViewHolder extends RecyclerView.ViewHolder {
+public class FragmentMainViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.memo_item_textView_content)
     TextView textViewContent;
     @BindView(R.id.memo_item_textView_time)
@@ -21,14 +21,14 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.memo_item_textView_etc)
     TextView textViewEtc;
 
-    public MainViewHolder(View itemView) {
+    public FragmentMainViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(MainItem mainItem) {
-        textViewContent.setText(mainItem.getContent());
-        textViewTime.setText(mainItem.getTime());
-        textViewEtc.setText(mainItem.getEtc());
+    public void bind(FragmentMainItem fragmentMainItem) {
+        textViewContent.setText(fragmentMainItem.getContent());
+        textViewTime.setText(fragmentMainItem.getTime());
+        textViewEtc.setText(fragmentMainItem.getEtc());
     }
 }

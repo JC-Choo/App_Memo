@@ -2,9 +2,7 @@ package com.choo.application.memo.App.main_memo;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.ActivityNotFoundException;
 import android.content.ClipData;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -20,17 +18,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.choo.application.memo.App.main.mvp.MainActivity;
+import com.choo.application.memo.App.main.MainActivity;
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.R;
 import com.choo.application.memo.Util.DateUtil;
 import com.choo.application.memo.Util.ToastUtil;
 import com.choo.application.memo.Util.sqlite.SQLiteUtil;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

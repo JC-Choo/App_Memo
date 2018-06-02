@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.choo.application.memo.App.main.mvp.MainActivity;
+import com.choo.application.memo.App.main.MainActivity;
 import com.choo.application.memo.Common.BaseActivity;
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
@@ -15,13 +15,12 @@ import com.choo.application.memo.R;
 import com.choo.application.memo.Util.SharedPreferenceUtil;
 import com.choo.application.memo.Util.ToastUtil;
 import com.choo.application.memo.Util.sqlite.SQLiteUtil;
-//import com.example.cnwlc.memo.Util.sqlite.signup.SQLiteUtilUser;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-05-28.
+ * Created by Bridge on 2018-06-02.
  */
 
 public class SignInActivity extends BaseActivity {
@@ -58,7 +57,7 @@ public class SignInActivity extends BaseActivity {
                     SharedPreferenceUtil.getInstance().setLoginCheckBox(checkBoxAutoLogin.isChecked());
                     SharedPreferenceUtil.getInstance().setLoginID(editTextId.getText().toString());
                 }
-                else ToastUtil.shortToast(this, "아이디 또는 비밀번호 정보가 맞지 않습니다.");
+                else ToastUtil.shortToast(this, getString(R.string.SignInActivity_ID_PW_check));
                 break;
             case R.id.SignInA_button_join_membership:
                 intent = new Intent(SignInActivity.this, SignUpActivity.class);

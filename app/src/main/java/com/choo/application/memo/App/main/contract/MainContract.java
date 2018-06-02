@@ -1,6 +1,6 @@
-package com.choo.application.memo.App.main.mvp;
+package com.choo.application.memo.App.main.contract;
 
-import com.choo.application.memo.App.main.MainItem;
+import com.choo.application.memo.App.main.fragment_main.FragmentMainItem;
 import com.choo.application.memo.Common.BasePresenter;
 import com.choo.application.memo.Common.BaseView;
 
@@ -15,6 +15,6 @@ public interface MainContract {
         void showPermissionDialog();
     }
     interface Presenter extends BasePresenter {
-        List<MainItem> setData(List<MainItem> mainItemList);
+        List<FragmentMainItem> setData(List<FragmentMainItem> fragmentMainItemList);
     }
 }

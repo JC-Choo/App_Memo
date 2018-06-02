@@ -35,7 +35,7 @@
         <activity android:name=".App.login.SignUpActivity"
             android:screenOrientation="portrait" />
         <!--메모 보기 화면-->
-        <activity android:name=".App.main.mvp.MainActivity"
+        <activity android:name=".App.main.MainActivity"
             android:screenOrientation="portrait" />
         <!--메모 화면-->
         <activity android:name=".App.main_memo.MemoActivity"

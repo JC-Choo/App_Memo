@@ -1,5 +1,5 @@
 <resources>
-    <!--공통-->
+<!--공통-->
     <string name="app_name">나만의 메모</string>
     <string name="title">제목</string>
     <string name="content">내용</string>
@@ -15,13 +15,11 @@
     <string name="second">Second</string>
     <string name="third">Third</string>
 
-    <!--MainActivity-->
-    <string name="memo">메모</string>
-    <string name="edit">편집</string>
-    <string name="completion">완료</string>
-    <string name="search">검색</string>
-    <string name="count_of_memo">개의 메모</string>
+    <string name="confirm">확인</string>
 
+
+
+<!--Activity-->
     <!--SignUpActivity-->
     <string name="enter_id">id를 입력하세요!</string>
     <string name="enter_password">비밀번호를 입력하세요!</string>
@@ -34,8 +32,23 @@
     <string name="authentication_failed">인증에 실패했습니다.</string>
     <string name="the_id_is_available_to_use">사용 가능한 아이디입니다.</string>
 
+    <!--SnakeView-->
+    <string name="mode_ready">Snake\nPress Up To Play</string>
+    <string name="mode_pause">Paused\nPress Up To Resume</string>
+    <string name="mode_lose_prefix">Game Over\nScore: </string>
+    <string name="mode_lose_suffix">\nPress Up To Play</string>
+    <!--<string name="str1">점수: </string>-->
+    <!--<string name="str2"/>-->
+    <!--<string name="str3">속도: </string>-->
+    <!--<string name="str4"/>-->
+
+    <!--PermissionUtil-->
+    <string name="request_permission_title">권한 요청</string>
+    <string name="request_permission_content">메모 시 사진을 가져와 함께 저장하기 위한 카메라 권한을 요청합니다.</string>
 
 
+
+<!--layout - activity-->
     <!--activity_sign_in-->
     <string name="hint_id">아이디</string>
     <string name="hint_password">비밀번호</string>
@@ -63,24 +76,32 @@
 
 
 
-    <!--SnakeView-->
-    <string name="mode_ready">Snake\nPress Up To Play</string>
-    <string name="mode_pause">Paused\nPress Up To Resume</string>
-    <string name="mode_lose_prefix">Game Over\nScore: </string>
-    <string name="mode_lose_suffix">\nPress Up To Play</string>
-    <!--<string name="str1">점수: </string>-->
-    <!--<string name="str2"/>-->
-    <!--<string name="str3">속도: </string>-->
-    <!--<string name="str4"/>-->
+<!--layout - fragment-->
+    <!--fragment_main-->
+    <string name="memo">메모</string>
+    <string name="edit">편집</string>
+    <string name="completion">완료</string>
+    <string name="search">검색</string>
+    <string name="count_of_memo">개의 메모</string>
+
+    <!--fragment_main_etc-->
+    <string name="settings">설정</string>
+    <string name="log_out">로그아웃</string>
+    <string name="alarm">알람</string>
+    <string name="timer">타이머</string>
+
+    <!--fragment_splash_first-->
+    <string name="simple_sign_up">간단한 회원가입</string>
+    <!--fragment_splash_second-->
+    <string name="manage_various_folders">다양한 폴더를 통해 원하는 곳에서 메모 관리 가능</string>
+    <!--fragment_splash_third-->
+    <string name="manage_note">시간별 메모 관리</string>
+    <!--fragment_splash_forth-->
+    <string name="manage_various_functions">다양한 기능을 통한 메모 관리 효율성 업</string>
 
 
 
-    <!--PermissionUtil-->
-    <string name="request_permission_title">권한 요청</string>
-    <string name="request_permission_content">메모 시 사진을 가져와 함께 저장하기 위한 카메라 권한을 요청합니다.</string>
-
-
-
+<!--ETC-->
     <!--Toast-->
     <string name="back_press">한 번 더 누르면 종료됩니다.</string>
     <string name="DBHelper_make_table">테이블이 생성되었습니다.</string>
@@ -92,4 +113,8 @@
     <string name="SignUpActivity_please_enter_your_phone_number">전화번호를 입력해 주세요.</string>
     <string name="SignUpActivity_authentication_number">인증 번호</string>
     <string name="FragmentWrite_please_enter_a_message">메시지를 입력하세요.</string>
+    <string name="SignInActivity_ID_PW_check">아이디 또는 비밀번호를 다시 확인하세요.</string>
+
+    <!--Dialog-->
+    <string name="dialog_content_log_out">정말 로그아웃 하시겠습니까?</string>
 </resources>

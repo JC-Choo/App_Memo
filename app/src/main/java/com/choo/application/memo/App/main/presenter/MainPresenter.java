@@ -1,10 +1,10 @@
-package com.choo.application.memo.App.main.mvp;
+package com.choo.application.memo.App.main.presenter;
 
 import android.app.Activity;
 
-import com.choo.application.memo.App.main.MainItem;
+import com.choo.application.memo.App.main.fragment_main.FragmentMainItem;
+import com.choo.application.memo.App.main.contract.MainContract;
 import com.choo.application.memo.Common.Defines;
-import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.Util.sqlite.SQLiteUtil;
 
 import java.util.List;
@@ -29,21 +29,21 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public List<MainItem> setData(List<MainItem> mainItemList) {
+    public List<FragmentMainItem> setData(List<FragmentMainItem> fragmentMainItemList) {
         SQLiteUtil.getInstance().setInintView(context, Defines.TABLE_MEMO);
         SQLiteUtil.getInstance().selectAll();
         List<String> memo = SQLiteUtil.getInstance().selectMemoAll();
             for(int a = 0; a < memo.size(); a++) {
                 String[] dividedMemo = memo.get(a).split("\\|");
-                MainItem mainItem;
+                FragmentMainItem fragmentMainItem;
                 if(dividedMemo.length > 2)
-                    mainItem = new MainItem(dividedMemo[1], dividedMemo[0], dividedMemo[2]);
+                    fragmentMainItem = new FragmentMainItem(dividedMemo[1], dividedMemo[0], dividedMemo[2]);
                 else
-                    mainItem = new MainItem(dividedMemo[1], dividedMemo[0], null);
+                    fragmentMainItem = new FragmentMainItem(dividedMemo[1], dividedMemo[0], null);
 
-                mainItemList.add(mainItem);
+                fragmentMainItemList.add(fragmentMainItem);
             }
 
-        return mainItemList;
+        return fragmentMainItemList;
     }
 }
