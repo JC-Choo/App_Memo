@@ -54,7 +54,6 @@
     <string name="hint_password">Password</string>
     <string name="auto_sign_in">Auto-Login</string>
     <string name="sign_in">Login</string>
-    <string name="temporary_sign_in">Temporary Login</string>
     <string name="sign_up">Join membership</string>
 
     <!--activity_sign_up-->
@@ -74,6 +73,12 @@
     <string name="game_snake">Snake</string>
     <string name="game_cancellation">Deselect Game</string>
 
+    <!--activity_version-->
+    <string name="current_version">Current version</string>
+    <string name="new_version">The latest version</string>
+    <string name="update_version">A version update is required.</string>
+    <string name="current_new_version">This is the latest version.</string>
+
 
 
 <!--layout - fragment-->
@@ -86,9 +91,10 @@
 
     <!--fragment_main_etc-->
     <string name="settings">Settings</string>
-    <string name="log_out">Log out</string>
     <string name="alarm">Alarm</string>
     <string name="timer">Timer</string>
+    <string name="log_out">Log out</string>
+    <string name="version">App Version</string>
 
     <!--fragment_splash_first-->
     <string name="simple_sign_up">Simple Membership</string>

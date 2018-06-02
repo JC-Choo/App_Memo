@@ -9,6 +9,7 @@
     <!--<uses-permission android:name="android.permission.VIBRATE" />-->
     <!--<uses-permission android:name="android.permission.CAMERA" />-->
     <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MemoApplication"
@@ -55,6 +56,8 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".App.etc.VersionActivity"
+            android:screenOrientation="portrait" />
 
         <receiver android:name=".App.etc.alarm.AlarmReceive" />
 
