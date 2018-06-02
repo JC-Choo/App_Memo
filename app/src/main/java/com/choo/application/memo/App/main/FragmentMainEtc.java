@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.choo.application.memo.App.etc.Timer_CountDown;
+import com.choo.application.memo.App.etc.VersionActivity;
 import com.choo.application.memo.App.etc.alarm.AlarmMain;
 import com.choo.application.memo.App.etc.game.one.OneToFifty;
 import com.choo.application.memo.App.etc.game.snake.Snake;
@@ -34,8 +35,8 @@ public class FragmentMainEtc extends Fragment {
         return rootView;
     }
 
-    @OnClick({R.id.fragmentMainEtc_button_alarm, R.id.fragmentMainEtc_button_timer,
-            R.id.fragmentMainEtc_button_game_1, R.id.fragmentMainEtc_button_game_2, R.id.fragmentMainEtc_button_log_out})
+    @OnClick({R.id.fragmentMainEtc_button_alarm, R.id.fragmentMainEtc_button_timer, R.id.fragmentMainEtc_button_game_1,
+            R.id.fragmentMainEtc_button_game_2, R.id.fragmentMainEtc_button_version, R.id.fragmentMainEtc_button_log_out})
     public void onClickEvent(View v) {
         Intent intent = null;
         switch (v.getId()) {
@@ -50,6 +51,9 @@ public class FragmentMainEtc extends Fragment {
                 break;
             case R.id.fragmentMainEtc_button_game_2 :
                 intent = new Intent(getActivity(), Snake.class);
+                break;
+            case R.id.fragmentMainEtc_button_version :
+                intent = new Intent(getActivity(), VersionActivity.class);
                 break;
             case R.id.fragmentMainEtc_button_log_out :
                 dialogUtil = DialogUtil.getDialog(getActivity(), getString(R.string.confirm), getString(R.string.dialog_content_log_out), yes, dissMiss);

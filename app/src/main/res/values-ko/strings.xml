@@ -54,7 +54,6 @@
     <string name="hint_password">비밀번호</string>
     <string name="auto_sign_in">자동 로그인</string>
     <string name="sign_in">로그인</string>
-    <string name="temporary_sign_in">임시 로그인</string>
     <string name="sign_up">회원가입</string>
 
     <!--activity_sign_up-->
@@ -74,6 +73,11 @@
     <string name="game_snake">Snake</string>
     <string name="game_cancellation">게임선택취소</string>
 
+    <!--activity_version-->
+    <string name="current_version">현재 버전</string>
+    <string name="new_version">최신 버전</string>
+    <string name="update_version">버전 업데이트가 필요합니다.</string>
+    <string name="current_new_version">현재 최신 버전입니다.</string>
 
 
 <!--layout - fragment-->
@@ -86,9 +90,10 @@
 
     <!--fragment_main_etc-->
     <string name="settings">설정</string>
-    <string name="log_out">로그아웃</string>
     <string name="alarm">알람</string>
     <string name="timer">타이머</string>
+    <string name="log_out">로그아웃</string>
+    <string name="version">앱 버전</string>
 
     <!--fragment_splash_first-->
     <string name="simple_sign_up">간단한 회원가입</string>

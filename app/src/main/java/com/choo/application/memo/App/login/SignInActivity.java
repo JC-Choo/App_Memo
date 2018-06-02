@@ -34,7 +34,6 @@ public class SignInActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -42,7 +41,7 @@ public class SignInActivity extends BaseActivity {
         return R.layout.activity_sign_in;
     }
 
-    @OnClick({R.id.SignInA_button_login, R.id.SignInA_button_join_membership, R.id.SignInA_button_temporary_login})
+    @OnClick({R.id.SignInA_button_login, R.id.SignInA_button_join_membership})
     public void onClickButton(View v) {
         Intent intent = null;
         switch (v.getId()) {
@@ -62,10 +61,13 @@ public class SignInActivity extends BaseActivity {
             case R.id.SignInA_button_join_membership:
                 intent = new Intent(SignInActivity.this, SignUpActivity.class);
                 break;
+<<<<<<< HEAD
             case R.id.SignInA_button_temporary_login:
                 SharedPreferenceUtil.getInstance().setLoginID("temporary_id");
                 intent = new Intent(SignInActivity.this, MainActivity.class);
                 break;
+=======
+>>>>>>> android
         }
         if (intent != null)
             startActivity(intent);
