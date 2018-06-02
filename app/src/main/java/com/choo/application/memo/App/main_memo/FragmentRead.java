@@ -12,11 +12,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.choo.application.memo.App.main.mvp.MainActivity;
+import com.choo.application.memo.App.main.MainActivity;
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.R;
-import com.choo.application.memo.Util.ToastUtil;
 import com.choo.application.memo.Util.sqlite.SQLiteUtil;
 
 import butterknife.BindView;

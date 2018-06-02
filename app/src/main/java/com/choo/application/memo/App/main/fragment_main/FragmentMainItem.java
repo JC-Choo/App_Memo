@@ -1,15 +1,15 @@
-package com.choo.application.memo.App.main;
+package com.choo.application.memo.App.main.fragment_main;
 
 /**
  * Created by Bridge on 2018-05-28.
  */
 
-public class MainItem {
+public class FragmentMainItem {
     private String content;
     private String time;
     private String etc;
 
-    public MainItem(String content, String time, String etc) {
+    public FragmentMainItem(String content, String time, String etc) {
         this.content = content;
         this.time = time;
         this.etc = etc;

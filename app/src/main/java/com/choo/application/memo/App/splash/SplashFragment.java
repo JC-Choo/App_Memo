@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.R;
 
+/**
+ * Created by JCChu on 2018-06-02.
+ */
+
 public class SplashFragment extends Fragment {
     private int pageNumber;
 
@@ -35,10 +39,10 @@ public class SplashFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView;
 
-        if(pageNumber == 0) rootView = inflater.inflate(R.layout.fragment_main_first, container, false);
-        else if(pageNumber == 1) rootView = inflater.inflate(R.layout.fragment_main_second, container, false);
-        else if(pageNumber == 2) rootView = inflater.inflate(R.layout.fragment_main_third, container, false);
-        else rootView = inflater.inflate(R.layout.fragment_main_forth, container, false);
+        if(pageNumber == 0) rootView = inflater.inflate(R.layout.fragment_splash_first, container, false);
+        else if(pageNumber == 1) rootView = inflater.inflate(R.layout.fragment_splash_second, container, false);
+        else if(pageNumber == 2) rootView = inflater.inflate(R.layout.fragment_splash_third, container, false);
+        else rootView = inflater.inflate(R.layout.fragment_splash_forth, container, false);
 
         return rootView;
     }

@@ -8,13 +8,10 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.choo.application.memo.App.main.MainItem;
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.R;
 import com.choo.application.memo.Util.sqlite.SQLiteUtil;
-
-import java.util.List;
 
 import butterknife.ButterKnife;
 

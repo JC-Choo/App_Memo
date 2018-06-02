@@ -7,8 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 
-import com.choo.application.memo.App.main.mvp.MainActivity;
-import com.choo.application.memo.App.main_memo.MemoActivity;
+import com.choo.application.memo.App.main.MainActivity;
 import com.choo.application.memo.App.splash.SplashActivity;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.Util.SharedPreferenceUtil;
