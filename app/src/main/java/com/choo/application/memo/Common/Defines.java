@@ -28,6 +28,7 @@ public class Defines {
     // Shared Preference KEY
     public final static String LOGIN_CHECK_BOX = "LOGIN_CHECK_BOX";
     public final static String LOGIN_ID = "LOGIN_ID";
+    public final static String MARKET_VERSION = "MARKET_VERSION";
 
     // INTENT KEY
     public final static String MAIN_TO_MEMO = "MAIN_TO_MEMO";
@@ -44,4 +45,8 @@ public class Defines {
     public final static String TIME = "TIME";
     public final static String CONTENT = "CONTENT";
     public final static String IMAGE_PATH = "IMAGE_PATH";
+
+    public final static String TYPE_MOBILE = "MOBILE_DATA_ENABLED";
+    public final static String TYPE_WIFI = "WIFI_ENABLED";
+    public final static String TYPE_NOT_CONNECTED = "NOT_CONNECTED_TO_INTERNET";
 }

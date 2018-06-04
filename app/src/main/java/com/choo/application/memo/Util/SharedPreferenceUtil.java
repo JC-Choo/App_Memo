@@ -59,4 +59,17 @@ public class SharedPreferenceUtil {
         editor.remove(Defines.LOGIN_ID);
         editor.apply();
     }
+
+    // App version 에 대한 set/get/clear
+    public void setMarketVersion(String marketVersion) {
+        editor.putString(Defines.MARKET_VERSION, marketVersion);
+        editor.commit();
+    }
+    public String getMarketVersion() {
+        return preferences.getString(Defines.MARKET_VERSION, "");
+    }
+    public void clearMarketVersion() {
+        editor.remove(Defines.MARKET_VERSION);
+        editor.apply();
+    }
 }

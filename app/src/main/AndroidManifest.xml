@@ -9,6 +9,7 @@
     <!--<uses-permission android:name="android.permission.VIBRATE" />-->
     <!--<uses-permission android:name="android.permission.CAMERA" />-->
     <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -59,7 +60,16 @@
         <activity android:name=".App.etc.VersionActivity"
             android:screenOrientation="portrait" />
 
+
+
         <receiver android:name=".App.etc.alarm.AlarmReceive" />
+        <receiver
+            android:name=".Util.network.NetworkChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
 
 
         <!--테스트 화면-->
