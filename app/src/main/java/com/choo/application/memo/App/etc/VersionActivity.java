@@ -1,6 +1,8 @@
 package com.choo.application.memo.App.etc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.R;
+import com.choo.application.memo.Util.SharedPreferenceUtil;
+import com.choo.application.memo.Util.network.NetworkChangeReceiver;
 import com.choo.application.memo.VersionChecker;
 
 import butterknife.BindView;
@@ -19,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-06-02.
+ * Created by Bridge on 2018-06-04.
  */
 
 public class VersionActivity extends AppCompatActivity {
@@ -33,6 +37,9 @@ public class VersionActivity extends AppCompatActivity {
 
     private String appVersion, marketVersion;
 
+    private NetworkChangeReceiver networkChangeReceiver;
+    private IntentFilter intentFilter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +50,19 @@ public class VersionActivity extends AppCompatActivity {
     }
 
     private void setInitView() {
-        ReceiveVersion receiveVersion = new ReceiveVersion();
-        receiveVersion.execute();
+        intentFilter = new IntentFilter("android.intent.action.MAIN");
+        networkChangeReceiver = new NetworkChangeReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+            }
+        };
+        this.registerReceiver(networkChangeReceiver, intentFilter);
+
+//        if(SharedPreferenceUtil.getInstance().getMarketVersion().equals("")) {
+            ReceiveVersion receiveVersion = new ReceiveVersion();
+            receiveVersion.execute();
+//        }
 
         appVersion = VersionChecker.getInstance().getAppVersion(this);
         textViewCurrentVersion.setText(appVersion);
@@ -54,6 +72,7 @@ public class VersionActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             marketVersion = VersionChecker.getInstance().getMarketVersion();
+            SharedPreferenceUtil.getInstance().setMarketVersion(marketVersion);
             return null;
         }
 
@@ -84,5 +103,12 @@ public class VersionActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        this.unregisterReceiver(this.networkChangeReceiver);
     }
 }
