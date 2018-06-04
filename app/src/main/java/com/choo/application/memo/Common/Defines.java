@@ -24,6 +24,7 @@ public class Defines {
     // Shared Preference KEY
     public final static String LOGIN_CHECK_BOX = "LOGIN_CHECK_BOX";
     public final static String LOGIN_ID = "LOGIN_ID";
+    public final static String NETWORK_STATUS = "NETWORK_STATUS";
     public final static String MARKET_VERSION = "MARKET_VERSION";
 
     // INTENT KEY

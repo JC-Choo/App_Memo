@@ -7,7 +7,7 @@ import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.MemoApplication;
 
 /**
- * Created by Bridge on 2018-05-24.
+ * Created by Bridge on 2018-06-05.
  */
 
 public class SharedPreferenceUtil {
@@ -26,7 +26,6 @@ public class SharedPreferenceUtil {
         editor = preferences.edit();
     }
 
-
     private static SharedPreferenceUtil instance;
     public static SharedPreferenceUtil getInstance() {
         if (instance == null)
@@ -34,6 +33,8 @@ public class SharedPreferenceUtil {
 
         return instance;
     }
+
+
 
     // Login 시 자동로그인 checkbox 에 대한 set/get/clear
     public void setLoginCheckBox(boolean loginCheckBox) {
@@ -61,7 +62,20 @@ public class SharedPreferenceUtil {
         editor.apply();
     }
 
-    // App version 에 대한 set/get/clear
+    // network status 에 대한 set/get/clear
+    public void setNetworkStatus(String networkStatus) {
+        editor.putString(Defines.NETWORK_STATUS, networkStatus);
+        editor.commit();
+    }
+    public String getNetworkStatus() {
+        return preferences.getString(Defines.NETWORK_STATUS, "");
+    }
+    public void clearNetworkStatus() {
+        editor.remove(Defines.NETWORK_STATUS);
+        editor.apply();
+    }
+
+    // Market Version 에 대한 set/get/clear
     public void setMarketVersion(String marketVersion) {
         editor.putString(Defines.MARKET_VERSION, marketVersion);
         editor.commit();

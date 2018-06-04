@@ -5,9 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.choo.application.memo.Common.Dlog;
+import com.choo.application.memo.Util.SharedPreferenceUtil;
 
 /**
- * Created by Bridge on 2018-06-04.
+ * Created by Bridge on 2018-06-05.
  */
 
 public class NetworkChangeReceiver extends BroadcastReceiver {
@@ -16,6 +17,8 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String status = NetworkCheckUtil.getConnectivityStatusString(context);
         Dlog.i("network status = "+status);
+
+        SharedPreferenceUtil.getInstance().setNetworkStatus(status);
 
         String action = intent.getAction();
         Dlog.i("network action = "+action);
