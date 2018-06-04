@@ -1,8 +1,6 @@
 package com.choo.application.memo.App.etc;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,9 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.choo.application.memo.Common.Defines;
+import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.R;
 import com.choo.application.memo.Util.SharedPreferenceUtil;
-import com.choo.application.memo.Util.network.NetworkChangeReceiver;
 import com.choo.application.memo.VersionChecker;
 
 import butterknife.BindView;
@@ -23,7 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-06-04.
+ * Created by Bridge on 2018-06-05.
  */
 
 public class VersionActivity extends AppCompatActivity {
@@ -37,9 +35,6 @@ public class VersionActivity extends AppCompatActivity {
 
     private String appVersion, marketVersion;
 
-    private NetworkChangeReceiver networkChangeReceiver;
-    private IntentFilter intentFilter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,22 +45,20 @@ public class VersionActivity extends AppCompatActivity {
     }
 
     private void setInitView() {
-        intentFilter = new IntentFilter("android.intent.action.MAIN");
-        networkChangeReceiver = new NetworkChangeReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-
-            }
-        };
-        this.registerReceiver(networkChangeReceiver, intentFilter);
-
-//        if(SharedPreferenceUtil.getInstance().getMarketVersion().equals("")) {
-            ReceiveVersion receiveVersion = new ReceiveVersion();
-            receiveVersion.execute();
-//        }
-
         appVersion = VersionChecker.getInstance().getAppVersion(this);
         textViewCurrentVersion.setText(appVersion);
+
+        if( !SharedPreferenceUtil.getInstance().getNetworkStatus().equals(Defines.TYPE_NOT_CONNECTED) ) {
+            Dlog.i("Connected Network");
+
+            ReceiveVersion receiveVersion = new ReceiveVersion();
+            receiveVersion.execute();
+        } else {
+            Dlog.i("Not Connected Network");
+
+            textViewNewVersion.setText(SharedPreferenceUtil.getInstance().getMarketVersion());
+            buttonSetText(SharedPreferenceUtil.getInstance().getMarketVersion(), appVersion);
+        }
     }
 
     class ReceiveVersion extends AsyncTask<String, String, String> {
@@ -81,14 +74,18 @@ public class VersionActivity extends AppCompatActivity {
             super.onPostExecute(s);
             textViewNewVersion.setText(marketVersion);
 
-            // 버전이 다를 경우 업데이트 하게끔 intent 로 이동, 같을 경우 최신버전입니다로 체크.
-            if (marketVersion.compareTo(appVersion) > 0) {
-                buttonUpdate.setEnabled(true);
-                buttonUpdate.setText(getString(R.string.update_version));
-            } else {
-                buttonUpdate.setEnabled(false);
-                buttonUpdate.setText(getString(R.string.current_new_version));
-            }
+            buttonSetText(marketVersion, appVersion);
+        }
+    }
+
+    private void buttonSetText(String market, String app) {
+        // 버전이 다를 경우 업데이트 하게끔 intent 로 이동, 같을 경우 최신버전입니다로 체크.
+        if (market.compareTo(app) > 0) {
+            buttonUpdate.setEnabled(true);
+            buttonUpdate.setText(getString(R.string.update_version));
+        } else {
+            buttonUpdate.setEnabled(false);
+            buttonUpdate.setText(getString(R.string.current_new_version));
         }
     }
 
@@ -103,12 +100,5 @@ public class VersionActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        this.unregisterReceiver(this.networkChangeReceiver);
     }
 }
