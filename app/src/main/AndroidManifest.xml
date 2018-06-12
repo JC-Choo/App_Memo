@@ -6,9 +6,9 @@
     <!--<uses-permission android:name="android.permission.RECEIVE_SMS" />-->
     <!--<uses-permission android:name="android.permission.READ_CONTACTS" />-->
 
-    <!--<uses-permission android:name="android.permission.VIBRATE" />-->
-    <!--<uses-permission android:name="android.permission.CAMERA" />-->
-    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -30,12 +30,15 @@
             </intent-filter>
         </activity>
 
-        <!--로그인 화면-->
-        <activity android:name=".App.login.SignInActivity"
+        <!--폴더 선택 화면-->
+        <activity android:name=".App.folder.FolderActivity"
             android:screenOrientation="portrait"/>
-        <!--회원가입 화면-->
-        <activity android:name=".App.login.SignUpActivity"
-            android:screenOrientation="portrait" />
+        <!--&lt;!&ndash;로그인 화면&ndash;&gt;-->
+        <!--<activity android:name=".App.login.SignInActivity"-->
+            <!--android:screenOrientation="portrait"/>-->
+        <!--&lt;!&ndash;회원가입 화면&ndash;&gt;-->
+        <!--<activity android:name=".App.login.SignUpActivity"-->
+            <!--android:screenOrientation="portrait" />-->
         <!--메모 보기 화면-->
         <activity android:name=".App.main.MainActivity"
             android:screenOrientation="portrait" />
@@ -44,9 +47,9 @@
             android:screenOrientation="portrait" />
 
 
-        <activity android:name=".App.etc.alarm.AlarmMain"
+        <activity android:name=".App.etc.alarm.AlarmActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".App.etc.Timer_CountDown"
+        <activity android:name=".App.etc.TimerCountDownActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".App.etc.game.one.OneToFifty"
             android:screenOrientation="portrait" />

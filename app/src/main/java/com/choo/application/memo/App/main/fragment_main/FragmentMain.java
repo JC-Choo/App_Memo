@@ -14,7 +14,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import com.choo.application.memo.App.main.RecyclerItemClickListener;
+import com.choo.application.memo.App.folder.FolderActivity;
+import com.choo.application.memo.Common.RecyclerItemClickListener;
 import com.choo.application.memo.App.main.contract.MainContract;
 import com.choo.application.memo.App.main.presenter.MainPresenter;
 import com.choo.application.memo.App.main_memo.MemoActivity;
@@ -31,7 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by JCChu on 2018-06-02.
+ * Created by JCChu on 2018-06-12.
  */
 
 public class FragmentMain extends Fragment implements MainContract.View {
@@ -113,7 +114,8 @@ public class FragmentMain extends Fragment implements MainContract.View {
 
         switch (v.getId()) {
             case R.id.fragmentMain_relative_layout_back :
-                ToastUtil.shortToast(context, "wait...");
+                intent = new Intent(context, FolderActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 break;
             case R.id.fragmentMain_image_view_add_memo :
                 intent = new Intent(context, MemoActivity.class);
@@ -123,7 +125,8 @@ public class FragmentMain extends Fragment implements MainContract.View {
                 ToastUtil.shortToast(context, "wait...");
                 break;
             case R.id.fragmentMain_text_view_search :
-                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+                ToastUtil.shortToast(context, "wait...");
+//                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
                 break;
         }
 

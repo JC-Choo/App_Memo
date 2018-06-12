@@ -6,13 +6,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.choo.application.memo.App.login.SignInActivity;
+import com.choo.application.memo.App.folder.FolderActivity;
 import com.choo.application.memo.MemoApplication;
 import com.choo.application.memo.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+/**
+ * Created by Bridge on 2018-06-12.
+ */
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -39,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @OnClick(R.id.splashActivityButton)
     public void onClickStart() {
-        Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+        Intent intent = new Intent(SplashActivity.this, FolderActivity.class);
         startActivity(intent);
     }
 }

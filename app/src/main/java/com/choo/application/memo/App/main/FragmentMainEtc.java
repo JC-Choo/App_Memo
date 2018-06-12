@@ -7,12 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.choo.application.memo.App.etc.Timer_CountDown;
+import com.choo.application.memo.App.etc.TimerCountDownActivity;
 import com.choo.application.memo.App.etc.VersionActivity;
-import com.choo.application.memo.App.etc.alarm.AlarmMain;
+import com.choo.application.memo.App.etc.alarm.AlarmActivity;
 import com.choo.application.memo.App.etc.game.one.OneToFifty;
 import com.choo.application.memo.App.etc.game.snake.Snake;
-import com.choo.application.memo.App.login.SignInActivity;
 import com.choo.application.memo.R;
 import com.choo.application.memo.Util.DialogUtil;
 import com.choo.application.memo.Util.SharedPreferenceUtil;
@@ -21,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by JCChu on 2018-06-02.
+ * Created by JCChu on 2018-06-12.
  */
 
 public class FragmentMainEtc extends Fragment {
@@ -36,15 +35,15 @@ public class FragmentMainEtc extends Fragment {
     }
 
     @OnClick({R.id.fragmentMainEtc_button_alarm, R.id.fragmentMainEtc_button_timer, R.id.fragmentMainEtc_button_game_1,
-            R.id.fragmentMainEtc_button_game_2, R.id.fragmentMainEtc_button_version, R.id.fragmentMainEtc_button_log_out})
+            R.id.fragmentMainEtc_button_game_2, R.id.fragmentMainEtc_button_version})
     public void onClickEvent(View v) {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.fragmentMainEtc_button_alarm :
-                intent = new Intent(getActivity(), AlarmMain.class);
+                intent = new Intent(getActivity(), AlarmActivity.class);
                 break;
             case R.id.fragmentMainEtc_button_timer :
-                intent = new Intent(getActivity(), Timer_CountDown.class);
+                intent = new Intent(getActivity(), TimerCountDownActivity.class);
                 break;
             case R.id.fragmentMainEtc_button_game_1 :
                 intent = new Intent(getActivity(), OneToFifty.class);
@@ -55,31 +54,30 @@ public class FragmentMainEtc extends Fragment {
             case R.id.fragmentMainEtc_button_version :
                 intent = new Intent(getActivity(), VersionActivity.class);
                 break;
-            case R.id.fragmentMainEtc_button_log_out :
-                dialogUtil = DialogUtil.getDialog(getActivity(), getString(R.string.confirm), getString(R.string.dialog_content_log_out), yes, dissMiss);
-                dialogUtil.show();
-                break;
+//            case R.id.fragmentMainEtc_button_log_out :
+//                dialogUtil = DialogUtil.getDialog(getActivity(), getString(R.string.confirm), getString(R.string.dialog_content_log_out), yes, dissMiss);
+//                dialogUtil.show();
+//                break;
         }
 
         if(intent != null)
             startActivity(intent);
     }
 
-
-    View.OnClickListener yes = new View.OnClickListener() {
-        public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), SignInActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-
-            SharedPreferenceUtil.getInstance().clearLoginCheckBox();
-
-            dialogUtil.dismiss();
-        }
-    };
-    View.OnClickListener dissMiss = new View.OnClickListener() {
-        public void onClick(View v) {
-            dialogUtil.dismiss();
-        }
-    };
+//    View.OnClickListener yes = new View.OnClickListener() {
+//        public void onClick(View v) {
+//            Intent intent = new Intent(getActivity(), SignInActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+//
+//            SharedPreferenceUtil.getInstance().clearLoginCheckBox();
+//
+//            dialogUtil.dismiss();
+//        }
+//    };
+//    View.OnClickListener dissMiss = new View.OnClickListener() {
+//        public void onClick(View v) {
+//            dialogUtil.dismiss();
+//        }
+//    };
 }
