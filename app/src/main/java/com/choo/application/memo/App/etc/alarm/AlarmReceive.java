@@ -25,7 +25,7 @@ public class AlarmReceive extends BroadcastReceiver {
          FLAG_ONE_SHOT - >이 플래그를 사용해 생성된 PendingIntent는 단 한번밖에 사용할 수 없습니다
          */
         NotificationManager notifier = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent intent2 = new Intent(context, AlarmMain.class);
+        Intent intent2 = new Intent(context, AlarmActivity.class);
         PendingIntent pender = PendingIntent.getActivity(context, 0, intent2, 0);
 
         Notification.Builder builder = new Notification.Builder(context)

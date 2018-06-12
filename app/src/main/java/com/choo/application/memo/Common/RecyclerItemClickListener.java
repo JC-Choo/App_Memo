@@ -1,4 +1,4 @@
-package com.choo.application.memo.App.main;
+package com.choo.application.memo.Common;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

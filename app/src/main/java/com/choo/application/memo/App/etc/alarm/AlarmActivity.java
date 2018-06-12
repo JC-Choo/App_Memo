@@ -18,7 +18,10 @@ import com.choo.application.memo.R;
 
 import java.util.Calendar;
 
-public class AlarmMain extends Activity {
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class AlarmActivity extends Activity {
     //View
     private TextView TText;
     private TextView DText;
@@ -44,6 +47,7 @@ public class AlarmMain extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
+        ButterKnife.bind(this);
 
         // 알람 관리자 핸들을 구한다
         mAlarmMgr = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -67,6 +71,16 @@ public class AlarmMain extends Activity {
         //텍스트뷰 갱신
         updateDisplay();
     }
+
+    @OnClick({R.id.alarmA_relative_layout_back})
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
+            case R.id.alarmA_relative_layout_back :
+                finish();
+                break;
+        }
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             //날짜설정 이벤트
@@ -78,8 +92,8 @@ public class AlarmMain extends Activity {
                 showDialog(TIME_DIALOG_ID);
                 break;
             case R.id.setting:
-                Intent intent = new Intent(AlarmMain.this, AlarmReceive.class);
-                PendingIntent pender = PendingIntent.getBroadcast(AlarmMain.this, 0, intent, 0);
+                Intent intent = new Intent(AlarmActivity.this, AlarmReceive.class);
+                PendingIntent pender = PendingIntent.getBroadcast(AlarmActivity.this, 0, intent, 0);
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(dYear, dMonth, dDay, dHour, dMinute);

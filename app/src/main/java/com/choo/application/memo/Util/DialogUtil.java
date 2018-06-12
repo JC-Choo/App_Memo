@@ -13,7 +13,11 @@ import android.widget.TextView;
 import com.choo.application.memo.R;
 
 /**
+<<<<<<< HEAD
  * Created by Bridge on 2018-05-06.
+=======
+ * Created by Bridge on 2018-06-12.
+>>>>>>> android
  */
 
 public class DialogUtil extends AlertDialog {
@@ -93,21 +97,3 @@ public class DialogUtil extends AlertDialog {
         });
     }
 }
-
-// 로그아웃
-//    View logOut = findViewById(R.id.log_out);
-//        logOut.setOnClickListener(view -> {
-//                dialogUtil = DialogUtil.getDialog(LogoutActivity.this, getString(R.string.logout), getString(R.string.LA_logout_check_question), yesLogOut, dialogDismiss);
-//                dialogUtil.show();
-//                });
-
-
-// 로그아웃에 대한 yes 버튼
-//    private View.OnClickListener yesLogOut = new View.OnClickListener() {
-//        public void onClick(View v) {
-//            RemoveUtil.startSplashActivity(LogoutActivity.this);
-//
-//            Toast.makeText(getApplicationContext(), getString(R.string.LogoutActivity_1), Toast.LENGTH_SHORT).show();
-//            dialogUtil.dismiss();
-//        }
-//    };

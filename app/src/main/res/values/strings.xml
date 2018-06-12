@@ -79,6 +79,18 @@
     <string name="update_version">A version update is required.</string>
     <string name="current_new_version">This is the latest version.</string>
 
+    <!--activity_timer_countdown-->
+    <string name="please_enter_second">Please enter second</string>
+    <string name="count_down_start">Count Down Start</string>
+    <string name="timer_start">Timer Start</string>
+    <string name="timer_stop">Timer Stop</string>
+    <string name="termination">Termination</string>
+    <string name="timer_init">00 : 00 : 00</string>
+
+    <!--activity_folder-->
+    <string name="folder">Folder</string>
+    <string name="create_new_folder">New Folder</string>
+
 
 
 <!--layout - fragment-->
@@ -107,6 +119,12 @@
 
 
 
+    <!--layout - etc-->
+    <string name="util_dilaog_edit_name">Name</string>
+    <string name="util_dilaog_text_save">Save</string>
+
+
+
 <!--ETC-->
     <!--Toast-->
     <string name="back_press">Press one more time to exit.</string>
@@ -120,7 +138,10 @@
     <string name="SignUpActivity_authentication_number">Authentication number</string>
     <string name="FragmentWrite_please_enter_a_message">Please enter a message.</string>
     <string name="SignInActivity_ID_PW_check">Please check your ID or password again.</string>
+    <string name="TimerCountDown_please_enter_the_correct_time">Please enter the correct time.</string>
+    <string name="TimerCountDown_the_count_is_complete">The count is complete.</string>
 
     <!--Dialog-->
     <string name="dialog_content_log_out">Are you sure you want to log out?</string>
+    <string name="dialog_content_create_new_folder">Please enter a name for this folder.</string>
 </resources>

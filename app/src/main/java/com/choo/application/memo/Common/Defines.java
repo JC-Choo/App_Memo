@@ -11,6 +11,8 @@ public class Defines {
     public final static int CODE_401 = 401;     // login fail
     public final static int CODE_1000 = 1000;   // success
 
+    public final static int COUNT_DOWN_INTERVAL = 1000;
+
     public final static String MARKET_APP_ADDRESS = "https://play.google.com/store/apps/details?id=com.choo.application.memo";
 
     // BUNDLE KEY

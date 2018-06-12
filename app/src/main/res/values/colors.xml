@@ -11,4 +11,7 @@
     <color name="blue">#0000FF</color>
     <color name="gray">#888888</color>
     <color name="silver">#C0C0C0</color>
+
+    <color name="orange">#F04B00</color>
+    <color name="dialog_background">#F0F0F0</color>
 </resources>

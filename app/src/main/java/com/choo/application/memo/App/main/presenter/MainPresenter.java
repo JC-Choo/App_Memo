@@ -10,7 +10,7 @@ import com.choo.application.memo.Util.sqlite.SQLiteUtil;
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-06-01.
+ * Created by Bridge on 2018-06-12.
  */
 
 public class MainPresenter implements MainContract.Presenter {
@@ -32,17 +32,18 @@ public class MainPresenter implements MainContract.Presenter {
     public List<FragmentMainItem> setData(List<FragmentMainItem> fragmentMainItemList) {
         SQLiteUtil.getInstance().setInintView(context, Defines.TABLE_MEMO);
         SQLiteUtil.getInstance().selectAll();
-        List<String> memo = SQLiteUtil.getInstance().selectMemoAll();
-            for(int a = 0; a < memo.size(); a++) {
-                String[] dividedMemo = memo.get(a).split("\\|");
-                FragmentMainItem fragmentMainItem;
-                if(dividedMemo.length > 2)
-                    fragmentMainItem = new FragmentMainItem(dividedMemo[1], dividedMemo[0], dividedMemo[2]);
-                else
-                    fragmentMainItem = new FragmentMainItem(dividedMemo[1], dividedMemo[0], null);
 
-                fragmentMainItemList.add(fragmentMainItem);
-            }
+        List<String> memo = SQLiteUtil.getInstance().selectMemoAll();
+        for (int a = 0; a < memo.size(); a++) {
+            String[] dividedMemo = memo.get(a).split("\\|");
+            FragmentMainItem fragmentMainItem;
+            if (dividedMemo.length > 2)
+                fragmentMainItem = new FragmentMainItem(dividedMemo[1], dividedMemo[0], dividedMemo[2]);
+            else
+                fragmentMainItem = new FragmentMainItem(dividedMemo[1], dividedMemo[0], null);
+
+            fragmentMainItemList.add(fragmentMainItem);
+        }
 
         return fragmentMainItemList;
     }

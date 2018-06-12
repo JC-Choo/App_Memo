@@ -79,6 +79,19 @@
     <string name="update_version">버전 업데이트가 필요합니다.</string>
     <string name="current_new_version">현재 최신 버전입니다.</string>
 
+    <!--activity_timer_countdown-->
+    <string name="please_enter_second">초를 입력하세요</string>
+    <string name="count_down_start">Count Down Start</string>
+    <string name="timer_start">Timer Start</string>
+    <string name="timer_stop">Timer Stop</string>
+    <string name="termination">종료</string>
+    <string name="timer_init">00 : 00 : 00</string>
+
+    <!--activity_folder-->
+    <string name="folder">폴더</string>
+    <string name="create_new_folder">새로운 폴더</string>
+
+
 
 <!--layout - fragment-->
     <!--fragment_main-->
@@ -106,6 +119,12 @@
 
 
 
+<!--layout - etc-->
+    <string name="util_dilaog_edit_name">이름</string>
+    <string name="util_dilaog_text_save">저장</string>
+
+
+
 <!--ETC-->
     <!--Toast-->
     <string name="back_press">한 번 더 누르면 종료됩니다.</string>
@@ -119,7 +138,10 @@
     <string name="SignUpActivity_authentication_number">인증 번호</string>
     <string name="FragmentWrite_please_enter_a_message">메시지를 입력하세요.</string>
     <string name="SignInActivity_ID_PW_check">아이디 또는 비밀번호를 다시 확인하세요.</string>
+    <string name="TimerCountDown_please_enter_the_correct_time">시간을 올바르게 입력하세요.</string>
+    <string name="TimerCountDown_the_count_is_complete">카운트가 완료되었습니다.</string>
 
     <!--Dialog-->
     <string name="dialog_content_log_out">정말 로그아웃 하시겠습니까?</string>
+    <string name="dialog_content_create_new_folder">이 폴더의 이름을 입력하세요.</string>
 </resources>
