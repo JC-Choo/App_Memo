@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.choo.application.memo.Common.Defines;
 
 /**
- * Created by Bridge on 2018-05-28.
+ * Created by Bridge on 2018-06-13.
  */
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -17,29 +17,27 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlStudent = "create table if not exists "+ Defines.TABLE_USER+"(" +
+        String sqlFolderName = "create table if not exists "+ Defines.TABLE_FOLDER_NAME+"(" +
                 "_no integer primary key autoincrement," +
-                "id text, " +
-                "password text, " +
-                "cellphone text);";
-        db.execSQL(sqlStudent);
+                "folder_name text);";
+        db.execSQL(sqlFolderName);
 
-        String sqlTeacher = "create table if not exists "+Defines.TABLE_MEMO+"(" +
+        String sqlMemo = "create table if not exists "+Defines.TABLE_MEMO+"(" +
                 "_no integer primary key autoincrement," +
-                "id text, " +
+                "folder_name text, " +
                 "time text, " +
                 "content text, " +
                 "image_path text);";
-        db.execSQL(sqlTeacher);
+        db.execSQL(sqlMemo);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sqlStudent = "drop table if exists "+ Defines.TABLE_USER+";";
-        db.execSQL(sqlStudent);
+        String sqlFolderName = "drop table if exists "+ Defines.TABLE_FOLDER_NAME+";";
+        db.execSQL(sqlFolderName);
 
-        String sqlTeacher = "drop table if exists "+Defines.TABLE_MEMO+";";
-        db.execSQL(sqlTeacher);
+        String sqlMemo = "drop table if exists "+Defines.TABLE_MEMO+";";
+        db.execSQL(sqlMemo);
 
         onCreate(db); // 다시 테이블 생성
     }

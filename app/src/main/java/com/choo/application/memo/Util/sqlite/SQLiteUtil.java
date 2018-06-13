@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-06-01.
+ * Created by Bridge on 2018-06-13.
  */
 
 public class SQLiteUtil {
@@ -36,7 +36,7 @@ public class SQLiteUtil {
                 context,  // 현재 화면의 제어권자
                 Defines.DATABASE_NAME,  // 데이터베이스 이름
                 null, // 커서팩토리 - null 이면 표준 커서가 사용됨
-                3);
+                4);
 
         try {
             sqLiteDatabase = helper.getWritableDatabase();
@@ -46,31 +46,37 @@ public class SQLiteUtil {
         }
     }
 
-    public void insert(String first, String second, String third) {
+    public void insertFolderName(String folderName) {
         ContentValues values = new ContentValues();
+
         // 키,값의 쌍으로 데이터 입력
-        if(tableName.equals(Defines.TABLE_USER)) {
-            values.put(Defines.ID, first);
-            values.put(Defines.PASSWORD, second);
-            values.put(Defines.CELLPHONE, third);
-        } else if(tableName.equals(Defines.TABLE_MEMO)) {
-            values.put(Defines.ID, SharedPreferenceUtil.getInstance().getLoginID());
-            values.put(Defines.TIME, first);
-            values.put(Defines.CONTENT, second);
-            values.put(Defines.IMAGE_PATH, third);
+        if(tableName.equals(Defines.TABLE_FOLDER_NAME)) {
+            values.put(Defines.FOLDER_NAME, folderName);
         }
 
         long result = sqLiteDatabase.insert(tableName, null, values);
         Dlog.i(tableName+" "+result + "번째 row insert 성공했음");
     }
 
-    public void update(int position, String first, String second, String third) {
+    public void insertMemo(String folderName, String time, String content, String imagePath) {
+        ContentValues values = new ContentValues();
+
+        // 키,값의 쌍으로 데이터 입력
+        if(tableName.equals(Defines.TABLE_MEMO)) {
+            values.put(Defines.FOLDER_NAME, folderName);
+            values.put(Defines.TIME, time);
+            values.put(Defines.CONTENT, content);
+            values.put(Defines.IMAGE_PATH, imagePath);
+        }
+
+        long result = sqLiteDatabase.insert(tableName, null, values);
+        Dlog.i(tableName+" "+result + "번째 row insert 성공했음");
+    }
+
+    public void updateFolder(int position, String folderName) {
         // 해당 _no 가져와서 _no 에 맞는 값을 변경하게끔 수정
         ContentValues values = new ContentValues();
-        values.put(Defines.ID, SharedPreferenceUtil.getInstance().getLoginID());
-        values.put(Defines.TIME, first);
-        values.put(Defines.CONTENT, second);
-        values.put(Defines.IMAGE_PATH, third);
+        values.put(Defines.FOLDER_NAME, folderName);
 
         int result = sqLiteDatabase.update(tableName,
                 values,    // 뭐라고 변경할지 ContentValues 설정
@@ -80,42 +86,55 @@ public class SQLiteUtil {
         Dlog.i(tableName+" "+result + "번째 row update 성공했음");
     }
 
-    public void delete(int number) {
-        int result = sqLiteDatabase.delete(tableName, "no=?", new String[]{String.valueOf(number)});
+    public void updateMemo(int position, String folderName, String time, String content, String imagePath) {
+        // 해당 _no 가져와서 _no 에 맞는 값을 변경하게끔 수정
+        ContentValues values = new ContentValues();
+        values.put(Defines.FOLDER_NAME, folderName);
+        values.put(Defines.TIME, time);
+        values.put(Defines.CONTENT, content);
+        values.put(Defines.IMAGE_PATH, imagePath);
+
+        int result = sqLiteDatabase.update(tableName,
+                values,    // 뭐라고 변경할지 ContentValues 설정
+                "_no=?", // 바꿀 항목을 찾을 조건절
+                new String[]{String.valueOf((position+1))});// 바꿀 항목으로 찾을 값 String 배열
+
+        Dlog.i(tableName+" "+result + "번째 row update 성공했음");
+    }
+
+    public void delete(int position) {
+        int result = sqLiteDatabase.delete(tableName, "no=?", new String[]{String.valueOf(position+1)});
 
         Dlog.i(tableName +" "+ result + "개 row delete 성공");
     }
 
-    // 로그인 시에 가져온 id와 pw를 SQLite의 data와 비교하기 위한 method
-    public int selectLogin(String loginID, String loginPassword) {
+    // 앱을 켠 뒤 folder 의 이름들을 가져올 method
+    public int selectFolderName() {
         Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
 
         while (c.moveToNext()) {
-            String id = c.getString(1);
-            String password = c.getString(2);
+            String folderName = c.getString(1);
 
-            if(id.equals(loginID) && password.equals(loginPassword)) {
-                Dlog.i(tableName+" id : " + id + ", password : " + password);
-                return Defines.CODE_1000;
-            }
+            Dlog.i(tableName+" folderName : " + folderName);
+            return Defines.CODE_1000;
         }
 
         return Defines.CODE_401;
     }
 
-    // MainA에서 클릭을 통해 메모 번호를 SQLite 의 data 와 비교하기 위한 method
+    // MemoA -> FragmentRead 로 전달할 해당 position+1 에 맞는 _no 값을 확인해 "시간, 내용, 이미지 경로" 를 가져오는 것.
     public String selectMemoRead(int position) {
         Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
 
         while (c.moveToNext()) {
             int _no = c.getInt(0);
-            String id = c.getString(1);
+            String folderName = c.getString(1);
             String time = c.getString(2);
             String content = c.getString(3);
             String imagePath = c.getString(4);
 
             if( _no == (position+1) ) {
-                Dlog.i(tableName+" selectMemoRead _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                Dlog.i(tableName+" selectMemoRead _no : " + _no+", folderName : " + folderName + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
                 return time+"|"+content+"|"+imagePath;
             }
         }
@@ -129,13 +148,13 @@ public class SQLiteUtil {
 
         while (c.moveToNext()) {
             int _no = c.getInt(0);
-            String id = c.getString(1);
+            String folderName = c.getString(1);
             String time = c.getString(2);
             String content = c.getString(3);
             String imagePath = c.getString(4);
 
             if( memoTime.equals(time) && memoContent.equals(content) ) {
-                Dlog.i(tableName+" selectMemoPosition _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                Dlog.i(tableName+" selectMemoPosition _no : " + _no+", folderName : " + folderName + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
                 return _no;
             }
         }
@@ -144,21 +163,21 @@ public class SQLiteUtil {
     }
 
     // MainA에서 Shared 에 저장한 id에 맞는 memo 를 보여주기 위해 SQLite 의 data 와 비교하기 위한 method
-    public List<String> selectMemoAll() {
+    public List<String> selectMemoAll(String selectedFolderName) {
         Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
 
         List<String> userMemo = new ArrayList<>();
 
         while (c.moveToNext()) {
             int _no = c.getInt(0);
-            String id = c.getString(1);
+            String folderName = c.getString(1);
             String time = c.getString(2);
             String content = c.getString(3);
             String imagePath = c.getString(4);
 
 
-            if( id.equals(SharedPreferenceUtil.getInstance().getLoginID()) ) {
-                Dlog.i(tableName+" selectMemoAll _no : " + _no+", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+            if( folderName.equals(selectedFolderName) ) {
+                Dlog.i(tableName+" selectMemoAll _no : " + _no+", folderName : " + folderName + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
                 userMemo.add(time + "|" + content + "|" + imagePath);
             }
         }
@@ -166,26 +185,29 @@ public class SQLiteUtil {
         return userMemo;
     }
 
-    public void selectAll() {
+    public void selectAllFolderName() {
         Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
-        if(tableName.equals(Defines.TABLE_USER)) {
+        if(tableName.equals(Defines.TABLE_FOLDER_NAME)) {
             while (c.moveToNext()) {
                 int _no = c.getInt(0);
-                String id = c.getString(1);
-                String password = c.getString(2);
-                String cellphone = c.getString(3);
+                String folderName = c.getString(1);
 
-                Dlog.i(tableName+" selectAll _no : " + _no + ", id : " + id + ", password : " + password + ", cellphone : " + cellphone);
+                Dlog.i(tableName+" selectAll _no : " + _no + ", folderName : " + folderName);
             }
-        } else if(tableName.equals(Defines.TABLE_MEMO)) {
+        }
+    }
+
+    public void selectAllMemo() {
+        Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
+        if(tableName.equals(Defines.TABLE_MEMO)) {
             while (c.moveToNext()) {
                 int _no = c.getInt(0);
-                String id = c.getString(1);
+                String folderName = c.getString(1);
                 String time = c.getString(2);
                 String content = c.getString(3);
                 String imagePath = c.getString(4);
 
-                Dlog.i(tableName+" selectAll _no : " + _no + ", id : " + id + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                Dlog.i(tableName+" selectAll _no : " + _no + ", folderName : " + folderName + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
             }
         }
     }

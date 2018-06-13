@@ -20,7 +20,7 @@ public class Defines {
 
     // DATABASE NAME, TABLE NAME
     public final static String DATABASE_NAME = "MEMO_APPLICATION.db";
-    public final static String TABLE_USER = "USER";
+    public final static String TABLE_FOLDER_NAME = "FOLDER_NAME";
     public final static String TABLE_MEMO = "MEMO";
 
     // Shared Preference KEY
@@ -38,7 +38,7 @@ public class Defines {
     public final static String READ = "READ";
 
 
-    public final static String ID = "ID";
+    public final static String FOLDER_NAME = "FOLDER_NAME";
     public final static String PASSWORD = "PASSWORD";
     public final static String CELLPHONE = "CELLPHONE";
     public final static String TIME = "TIME";
