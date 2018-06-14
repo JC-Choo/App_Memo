@@ -9,12 +9,13 @@ import android.view.View;
 
 import com.choo.application.memo.App.main.MainActivity;
 import com.choo.application.memo.Common.BaseActivity;
+import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.Common.RecyclerItemClickListener;
 import com.choo.application.memo.R;
 import com.choo.application.memo.Util.DialogEditUtil;
-import com.choo.application.memo.Util.DialogUtil;
 import com.choo.application.memo.Util.ToastUtil;
+import com.choo.application.memo.Util.sqlite.SQLiteUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-06-12.
+ * Created by Bridge on 2018-06-14.
  */
 
 public class FolderActivity extends BaseActivity {
@@ -45,6 +46,7 @@ public class FolderActivity extends BaseActivity {
         return R.layout.activity_folder;
     }
 
+    // 삭제, 새 폴더 추가
     @OnClick({R.id.folderA_text_view_edit, R.id.folderA_text_view_new_folder})
     public void onClickEvent(View v) {
         switch (v.getId()) {
@@ -89,6 +91,9 @@ public class FolderActivity extends BaseActivity {
                 @Override
                 public void callBackName(String name) {
                     Dlog.i("name = "+name);
+
+                    SQLiteUtil.getInstance().setInitView(getApplicationContext(), Defines.FOLDER);
+                    SQLiteUtil.getInstance().insertFolder(name);
                 }
             });
 

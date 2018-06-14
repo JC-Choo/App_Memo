@@ -22,14 +22,22 @@ public class Defines {
     public final static String MEMO_CONTENT = "MEMO_CONTENT";
     public final static String MEMO_IMAGE_PATH = "MEMO_IMAGE_PATH";
 
-    // DATABASE NAME, TABLE NAME
+    // DATABASE NAME
     public final static String DATABASE_NAME = "MEMO_APPLICATION.db";
-    public final static String TABLE_FOLDER_NAME = "FOLDER_NAME";
-    public final static String TABLE_MEMO = "MEMO";
+    // TABLE NAME
+    public final static String FOLDER = "FOLDER";
+    public final static String MEMO = "MEMO";
+    // INDEX NAME
+    public final static String ID = "id";
+    public final static String FOLDER_NAME = "folder_name";
+    public final static String FOLDER_NAME_ID = "folder_name_id";
+    public final static String TIME = "time";
+    public final static String CONTENT = "content";
+    public final static String IMAGE_PATH = "image_path";
 
     // Shared Preference KEY
     public final static String LOGIN_CHECK_BOX = "LOGIN_CHECK_BOX";
-    public final static String LOGIN_ID = "LOGIN_ID";
+    public final static String SELECTED_FOLDER_NAME_ID = "SELECTED_FOLDER_NAME_ID";
     public final static String NETWORK_STATUS = "NETWORK_STATUS";
     public final static String MARKET_VERSION = "MARKET_VERSION";
 
@@ -41,13 +49,6 @@ public class Defines {
     public final static String WRITE = "WRITE";
     public final static String READ = "READ";
 
-
-    public final static String FOLDER_NAME = "FOLDER_NAME";
-    public final static String PASSWORD = "PASSWORD";
-    public final static String CELLPHONE = "CELLPHONE";
-    public final static String TIME = "TIME";
-    public final static String CONTENT = "CONTENT";
-    public final static String IMAGE_PATH = "IMAGE_PATH";
 
     public final static String TYPE_MOBILE = "MOBILE_DATA_ENABLED";
     public final static String TYPE_WIFI = "WIFI_ENABLED";

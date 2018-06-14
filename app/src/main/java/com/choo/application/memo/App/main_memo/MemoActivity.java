@@ -16,7 +16,7 @@ import com.choo.application.memo.Util.sqlite.SQLiteUtil;
 import butterknife.ButterKnife;
 
 /**
- * Created by Bridge on 2018-06-01.
+ * Created by Bridge on 2018-06-14.
  */
 
 public class MemoActivity extends AppCompatActivity {
@@ -37,8 +37,8 @@ public class MemoActivity extends AppCompatActivity {
         position = intent.getIntExtra(Defines.THE_NUMBER_OF_MEMO, -1);
         Dlog.i("position = "+position);
 
-        SQLiteUtil.getInstance().setInintView(getApplicationContext(), Defines.TABLE_MEMO);
-        String memoAboutPosition = SQLiteUtil.getInstance().selectMemoRead(position);
+        SQLiteUtil.getInstance().setInitView(getApplicationContext(), Defines.MEMO);
+        String memoAboutPosition = SQLiteUtil.getInstance().selectedMemo(position);
 
         String[] dividedMemo = new String[0];
         for(int i = 0; i < memoAboutPosition.length(); i++) {

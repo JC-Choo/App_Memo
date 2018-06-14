@@ -46,17 +46,17 @@ public class SignInActivity extends BaseActivity {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.SignInA_button_login:
-                SQLiteUtil.getInstance().setInintView(this, Defines.TABLE_USER);
-                int result = SQLiteUtil.getInstance().selectLogin(editTextId.getText().toString(), editTextPassword.getText().toString());
-                Dlog.i("result_code = " + result);
-                SQLiteUtil.getInstance().selectAll();
-
-                if (result == Defines.CODE_1000) {
-                    intent = new Intent(SignInActivity.this, MainActivity.class);
-                    SharedPreferenceUtil.getInstance().setLoginCheckBox(checkBoxAutoLogin.isChecked());
-                    SharedPreferenceUtil.getInstance().setLoginID(editTextId.getText().toString());
-                }
-                else ToastUtil.shortToast(this, getString(R.string.SignInActivity_ID_PW_check));
+//                SQLiteUtil.getInstance().setInintView(this, Defines.TABLE_USER);
+//                int result = SQLiteUtil.getInstance().selectLogin(editTextId.getText().toString(), editTextPassword.getText().toString());
+//                Dlog.i("result_code = " + result);
+//                SQLiteUtil.getInstance().selectAll();
+//
+//                if (result == Defines.CODE_1000) {
+//                    intent = new Intent(SignInActivity.this, MainActivity.class);
+//                    SharedPreferenceUtil.getInstance().setLoginCheckBox(checkBoxAutoLogin.isChecked());
+//                    SharedPreferenceUtil.getInstance().setLoginID(editTextId.getText().toString());
+//                }
+//                else ToastUtil.shortToast(this, getString(R.string.SignInActivity_ID_PW_check));
                 break;
             case R.id.SignInA_button_join_membership:
                 intent = new Intent(SignInActivity.this, SignUpActivity.class);
