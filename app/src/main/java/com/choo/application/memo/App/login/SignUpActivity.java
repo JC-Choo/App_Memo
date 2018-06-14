@@ -52,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
             editTextId.setInputType(InputType.TYPE_CLASS_TEXT);
         }
 
-        SQLiteUtil.getInstance().setInintView(this, Defines.TABLE_USER);
+//        SQLiteUtil.getInstance().setInintView(this, Defines.TABLE_USER);
     }
 
     @OnClick({R.id.SignUpA_relative_layout_back, R.id.SignUpA_button_id_check, R.id.SignUpA_button_certification_number,
@@ -130,7 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 // 중복 체크 했을 경우
                 if (possibleId && possibleNumber) {
-                    SQLiteUtil.getInstance().insert(editTextId.getText().toString(), editTextPassword.getText().toString(), editTextCellPhone.getText().toString());
+//                    SQLiteUtil.getInstance().insert(editTextId.getText().toString(), editTextPassword.getText().toString(), editTextCellPhone.getText().toString());
                     finish();
                 }
                 break;
@@ -145,6 +145,6 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        SQLiteUtil.getInstance().selectAll();
+//        SQLiteUtil.getInstance().selectAll();
     }
 }

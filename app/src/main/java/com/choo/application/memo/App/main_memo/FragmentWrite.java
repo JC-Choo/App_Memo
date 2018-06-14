@@ -24,6 +24,7 @@ import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.R;
 import com.choo.application.memo.Util.DateUtil;
+import com.choo.application.memo.Util.SharedPreferenceUtil;
 import com.choo.application.memo.Util.ToastUtil;
 import com.choo.application.memo.Util.sqlite.SQLiteUtil;
 
@@ -34,7 +35,7 @@ import butterknife.OnClick;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
- * Created by Bridge on 2018-06-01.
+ * Created by Bridge on 2018-06-14.
  */
 
 public class FragmentWrite extends Fragment {
@@ -113,12 +114,15 @@ public class FragmentWrite extends Fragment {
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
 
-                    SQLiteUtil.getInstance().setInintView(getActivity(), Defines.TABLE_MEMO);
+                    SQLiteUtil.getInstance().setInitView(getActivity(), Defines.MEMO);
 
-                    if(position == -1)
-                        SQLiteUtil.getInstance().insert(DateUtil.getCurrentTimeYMDAHM(), editTextContent.getText().toString(), selectedImagePath);
-                    else
-                        SQLiteUtil.getInstance().update(position, DateUtil.getCurrentTimeYMDAHM(), editTextContent.getText().toString(), selectedImagePath);
+                    if(position == -1) {
+                        SQLiteUtil.getInstance().insertMemo(SharedPreferenceUtil.getInstance().getFolderNameId(),
+                                DateUtil.getCurrentTimeYMDAHM(), editTextContent.getText().toString(), selectedImagePath);
+                    } else {
+                        SQLiteUtil.getInstance().updateMemo(position, SharedPreferenceUtil.getInstance().getFolderNameId(),
+                                DateUtil.getCurrentTimeYMDAHM(), editTextContent.getText().toString(), selectedImagePath);
+                    }
 
                     fragment = new FragmentRead();
                     Bundle bundle = new Bundle();
@@ -127,7 +131,6 @@ public class FragmentWrite extends Fragment {
                     bundle.putString(Defines.MEMO_CONTENT, editTextContent.getText().toString());
                     bundle.putString(Defines.MEMO_IMAGE_PATH, selectedImagePath);
                     fragment.setArguments(bundle);
-                    SQLiteUtil.getInstance().selectAll();
                 }
                 break;
             case R.id.writeF_floating_action_menu_item_camera:
@@ -185,7 +188,10 @@ public class FragmentWrite extends Fragment {
 
                 //ClipData 또는 Uri를 가져온다
                 Uri uri = data.getData();
-                ClipData clipData = data.getClipData();
+                ClipData clipData = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    clipData = data.getClipData();
+                }
 
                 //이미지 URI 를 이용하여 이미지뷰에 순서대로 세팅한다.
                 if (clipData != null) {

@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Bridge on 2018-06-01.
+ * Created by Bridge on 2018-06-14.
  */
 
 public class FragmentRead extends Fragment {
@@ -57,13 +57,19 @@ public class FragmentRead extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_memo_read, container, false);
         ButterKnife.bind(this, rootView);
 
+        return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         Dlog.i("position = "+position+", savedTime = "+savedTime+", savedContent = "+savedContent+", savedImagePath = "+savedImagePath);
 
         textViewTime.setText(savedTime);
         textViewContent.setText(savedContent);
 
         if(position == -1) {
-            SQLiteUtil.getInstance().setInintView(getActivity(), Defines.TABLE_MEMO);
+            SQLiteUtil.getInstance().setInitView(getActivity(), Defines.MEMO);
             position = SQLiteUtil.getInstance().selectMemoPosition(savedTime, savedContent, savedImagePath);
         }
 
@@ -86,8 +92,6 @@ public class FragmentRead extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
-        return rootView;
     }
 
     @OnClick({R.id.readF_relative_layout_back})

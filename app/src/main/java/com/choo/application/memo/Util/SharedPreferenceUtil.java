@@ -7,7 +7,7 @@ import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.MemoApplication;
 
 /**
- * Created by Bridge on 2018-06-05.
+ * Created by Bridge on 2018-06-14.
  */
 
 public class SharedPreferenceUtil {
@@ -49,16 +49,16 @@ public class SharedPreferenceUtil {
         editor.apply();
     }
 
-    // Login ID 에 대한 set/get/clear
-    public void setLoginID(String loginID) {
-        editor.putString(Defines.LOGIN_ID, loginID);
+    // 선택한 폴더 ID에 대한 set/get/clear
+    public void setFolderNameId(int folderNameId) {
+        editor.putInt(Defines.SELECTED_FOLDER_NAME_ID, folderNameId);
         editor.commit();
     }
-    public String getLoginID() {
-        return preferences.getString(Defines.LOGIN_ID, "");
+    public int getFolderNameId() {
+        return preferences.getInt(Defines.SELECTED_FOLDER_NAME_ID, -1);
     }
-    public void clearLoginID() {
-        editor.remove(Defines.LOGIN_ID);
+    public void clearFolderNameId() {
+        editor.remove(Defines.SELECTED_FOLDER_NAME_ID);
         editor.apply();
     }
 

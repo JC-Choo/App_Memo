@@ -5,12 +5,13 @@ import android.app.Activity;
 import com.choo.application.memo.App.main.fragment_main.FragmentMainItem;
 import com.choo.application.memo.App.main.contract.MainContract;
 import com.choo.application.memo.Common.Defines;
+import com.choo.application.memo.Util.SharedPreferenceUtil;
 import com.choo.application.memo.Util.sqlite.SQLiteUtil;
 
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-06-12.
+ * Created by Bridge on 2018-06-14.
  */
 
 public class MainPresenter implements MainContract.Presenter {
@@ -30,10 +31,10 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public List<FragmentMainItem> setData(List<FragmentMainItem> fragmentMainItemList) {
-        SQLiteUtil.getInstance().setInintView(context, Defines.TABLE_MEMO);
-        SQLiteUtil.getInstance().selectAll();
+        SQLiteUtil.getInstance().setInitView(context, Defines.MEMO);
 
-        List<String> memo = SQLiteUtil.getInstance().selectMemoAll();
+        List<String> memo = SQLiteUtil.getInstance().selectedAllMemo(SharedPreferenceUtil.getInstance().getFolderNameId());
+
         for (int a = 0; a < memo.size(); a++) {
             String[] dividedMemo = memo.get(a).split("\\|");
             FragmentMainItem fragmentMainItem;
