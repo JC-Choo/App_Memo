@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Bridge on 2018-06-14.
+ * Created by Bridge on 2018-06-15.
  */
 
 public class SQLiteUtil {
@@ -62,7 +62,7 @@ public class SQLiteUtil {
         }
 
         long result = sqLiteDatabase.insert(tableName, null, values);
-        Dlog.i(tableName + " " + result + "번째 row insert 성공했음");
+        Dlog.i(tableName + " insertFolder " + result + "번째 row insert 성공했음");
     }
 
     public void insertMemo(int folderNameId, String time, String content, String imagePath) {
@@ -77,7 +77,7 @@ public class SQLiteUtil {
         }
 
         long result = sqLiteDatabase.insert(tableName, null, values);
-        Dlog.i(tableName + " " + result + "번째 row insert 성공했음");
+        Dlog.i(tableName + " insertMemo " + result + "번째 row insert 성공했음");
     }
 
 
@@ -95,7 +95,7 @@ public class SQLiteUtil {
                 "id=?", // 바꿀 항목을 찾을 조건절
                 new String[]{String.valueOf((position + 1))});// 바꿀 항목으로 찾을 값 String 배열
 
-        Dlog.i(tableName + " " + result + "번째 row update 성공했음");
+        Dlog.i(tableName + " updateFolder " + result + "번째 row update 성공했음");
     }
 
     // content, image 변경 시 Table MEMO 변경
@@ -112,7 +112,7 @@ public class SQLiteUtil {
                 "id=?", // 바꿀 항목을 찾을 조건절
                 new String[]{String.valueOf((position + 1))});// 바꿀 항목으로 찾을 값 String 배열
 
-        Dlog.i(tableName + " " + result + "번째 row update 성공했음");
+        Dlog.i(tableName + " updateMemo " + result + "번째 row update 성공했음");
     }
 
 
@@ -122,7 +122,7 @@ public class SQLiteUtil {
     public void delete(int position) {
         int result = sqLiteDatabase.delete(tableName, "id=?", new String[]{String.valueOf(position + 1)});
 
-        Dlog.i(tableName + " " + result + "개 row delete 성공");
+        Dlog.i(tableName + " delete " + result + "개 row delete 성공");
     }
 
 
@@ -158,7 +158,7 @@ public class SQLiteUtil {
             String imagePath = c.getString(4);
 
             if (folderNameId == selectedFolderNameId) {
-                Dlog.i(tableName + " selectMemoAll id : " + id + ", selectedFolderNameId : " + selectedFolderNameId + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                Dlog.i(tableName + " selectedAllMemo id : " + id + ", selectedFolderNameId : " + selectedFolderNameId + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
                 userMemo.add(time + "|" + content + "|" + imagePath);
             }
         }
@@ -178,8 +178,25 @@ public class SQLiteUtil {
             String imagePath = c.getString(4);
 
             if (id == (position + 1)) {
-                Dlog.i(tableName + " selectMemoRead id : " + id + ", folderNameId : " + folderNameId + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
+                Dlog.i(tableName + " selectedMemo id : " + id + ", folderNameId : " + folderNameId + ", time : " + time + ", content : " + content + ", imagePath : " + imagePath);
                 return time + "|" + content + "|" + imagePath;
+            }
+        }
+
+        return String.valueOf(Defines.CODE_401);
+    }
+
+    // MemoA -> FragmentRead 로 전달할 해당 position+1 에 맞는 id 값을 확인해 "시간, 내용, 이미지 경로" 를 가져오는 것.
+    public String selectedFolderName(int position) {
+        Cursor c = sqLiteDatabase.query(tableName, null, null, null, null, null, null);
+
+        while (c.moveToNext()) {
+            int id = c.getInt(0);
+            String folderName = c.getString(1);
+
+            if (id == (position + 1)) {
+                Dlog.i(tableName + " selectedFolderName id : " + id + ", folderName : " + folderName);
+                return folderName;
             }
         }
 

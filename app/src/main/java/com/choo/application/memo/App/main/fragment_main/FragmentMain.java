@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,6 +40,8 @@ public class FragmentMain extends Fragment implements MainContract.View {
 
     @BindView(R.id.fragmentMain_recycler_view)
     RecyclerView recyclerView;
+    @BindView(R.id.fragmentMain_text_view_title)
+    TextView textViewTitle;
     @BindView(R.id.fragmentMain_text_view_number_of_memos)
     TextView textViewNumberOfMemos;
     @BindView(R.id.fragmentMain_text_view_search)
@@ -50,12 +53,14 @@ public class FragmentMain extends Fragment implements MainContract.View {
     private MainPresenter presenter;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, rootView);
-
-        context = getActivity();
-
         return rootView;
     }
 
@@ -74,8 +79,9 @@ public class FragmentMain extends Fragment implements MainContract.View {
     @Override
     public void setPresenter(MainContract.Presenter presenter) { }
 
-    @SuppressLint("SetTextI18n")
     private void initView() {
+        context = getActivity();
+
         presenter = new MainPresenter(this, context);
         presenter.start();
 
