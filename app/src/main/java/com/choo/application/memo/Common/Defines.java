@@ -36,12 +36,14 @@ public class Defines {
     public final static String IMAGE_PATH = "image_path";
 
     // Shared Preference KEY
-    public final static String LOGIN_CHECK_BOX = "LOGIN_CHECK_BOX";
+    public final static String FIRST_FOLDER_NAME = "FIRST_FOLDER_NAME";
     public final static String SELECTED_FOLDER_NAME_ID = "SELECTED_FOLDER_NAME_ID";
     public final static String NETWORK_STATUS = "NETWORK_STATUS";
     public final static String MARKET_VERSION = "MARKET_VERSION";
+    public final static String CHECK_SPLASH = "CHECK_SPLASH";
 
     // INTENT KEY
+    public final static String SELECTED_FOLDER_NAME = "SELECTED_FOLDER_NAME";
     public final static String MAIN_TO_MEMO = "MAIN_TO_MEMO";
     public final static String THE_NUMBER_OF_MEMO = "THE_NUMBER_OF_MEMO";
 

@@ -1,18 +1,14 @@
 package com.choo.application.memo.App.folder;
 
 /**
- * Created by JCChu on 2018-06-12.
+ * Created by JCChu on 2018-06-15.
  */
 
 public class FolderItem {
 
     private String stringTitle;
     private String stringCountOfMemos;
-
-    public FolderItem(String stringTitle, String stringCountOfMemos) {
-        this.stringTitle = stringTitle;
-        this.stringCountOfMemos = stringCountOfMemos;
-    }
+    private boolean isSelected;
 
     public String getStringTitle() {
         return stringTitle;
@@ -28,5 +24,13 @@ public class FolderItem {
 
     public void setStringCountOfMemos(String stringCountOfMemos) {
         this.stringCountOfMemos = stringCountOfMemos;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

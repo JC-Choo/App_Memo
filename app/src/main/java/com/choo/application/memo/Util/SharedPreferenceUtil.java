@@ -7,7 +7,7 @@ import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.MemoApplication;
 
 /**
- * Created by Bridge on 2018-06-14.
+ * Created by Bridge on 2018-06-15.
  */
 public class SharedPreferenceUtil {
     private SharedPreferences preferences;
@@ -35,16 +35,29 @@ public class SharedPreferenceUtil {
 
 
 
-    // Login 시 자동로그인 checkbox 에 대한 set/get/clear
-    public void setLoginCheckBox(boolean loginCheckBox) {
-        editor.putBoolean(Defines.LOGIN_CHECK_BOX, loginCheckBox);
+    // 맨 처음 1회에 한해 memo 라는 폴더 이름을 sqlite에 저장하기 위한 set/get/clear
+    public void setFirstFolderName(String memoName) {
+        editor.putString(Defines.FIRST_FOLDER_NAME, memoName);
         editor.commit();
     }
-    public boolean getLoginCheckBox() {
-        return preferences.getBoolean(Defines.LOGIN_CHECK_BOX, false);
+    public String getFirstFolderName() {
+        return preferences.getString(Defines.FIRST_FOLDER_NAME, "");
     }
-    public void clearLoginCheckBox() {
-        editor.remove(Defines.LOGIN_CHECK_BOX);
+    public void clearFirstFolderName() {
+        editor.remove(Defines.FIRST_FOLDER_NAME);
+        editor.apply();
+    }
+
+    // SplashActivity 에서 더이상 보지 않기 클릭 시에 대한 set/get/clear
+    public void setCheckSplash(boolean checkSplash) {
+        editor.putBoolean(Defines.CHECK_SPLASH, checkSplash);
+        editor.commit();
+    }
+    public boolean getCheckSplash() {
+        return preferences.getBoolean(Defines.CHECK_SPLASH, false);
+    }
+    public void clearCheckSplash() {
+        editor.remove(Defines.CHECK_SPLASH);
         editor.apply();
     }
 

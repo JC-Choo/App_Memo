@@ -20,14 +20,23 @@ import com.choo.application.memo.App.main_memo.MemoActivity;
 import com.choo.application.memo.App.main.MainActivity;
 >>>>>>> android
 import com.choo.application.memo.App.splash.SplashActivity;
+import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.Util.SharedPreferenceUtil;
+<<<<<<< HEAD
 >>>>>>> android:app/src/main/java/com/choo/application/memo/MemoApplication.java
+=======
+import com.choo.application.memo.Util.sqlite.SQLiteUtil;
+>>>>>>> android
 
 import java.util.Locale;
 
 /**
+<<<<<<< HEAD
  * Created by Bridge on 2018-05-24.
+=======
+ * Created by Bridge on 2018-06-15.
+>>>>>>> android
  */
 
 public class MemoApplication extends Application {
@@ -63,15 +72,15 @@ public class MemoApplication extends Application {
     }
 
     private void setInitView() {
-        Intent intent = null;
+        if( !SharedPreferenceUtil.getInstance().getFirstFolderName().equals(getString(R.string.memo)) ) {
+            SharedPreferenceUtil.getInstance().setFirstFolderName(getString(R.string.memo));
+            SQLiteUtil.getInstance().setInitView(getApplicationContext(), Defines.FOLDER);
+            SQLiteUtil.getInstance().insertFolder(getString(R.string.memo));
+        }
 
-        if (SharedPreferenceUtil.getInstance().getLoginCheckBox())
-            intent = new Intent(this, MainActivity.class);
-        else
-            intent = new Intent(this, SplashActivity.class);
-
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+//        Intent intent = new Intent(this, MainActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
     }
 
     // 현재 디버그모드여부를 리턴

@@ -1,15 +1,17 @@
 package com.choo.application.memo.App.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
 import com.choo.application.memo.App.main.fragment_main.FragmentMainViewPagerAdapter;
 import com.choo.application.memo.Common.BackPressClose;
+import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.R;
 
 /**
- * Created by JCChu on 2018-06-02.
+ * Created by JCChu on 2018-06-15.
  */
 
 public class MainActivity extends FragmentActivity {

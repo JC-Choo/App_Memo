@@ -9,7 +9,7 @@ import com.choo.application.memo.App.main.FragmentMainEtc;
 import com.choo.application.memo.App.main.fragment_main.FragmentMain;
 
 /**
- * Created by JCChu on 2018-06-02.
+ * Created by JCChu on 2018-06-15.
  */
 
 public class FragmentMainViewPagerAdapter extends FragmentPagerAdapter {

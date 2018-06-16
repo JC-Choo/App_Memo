@@ -17,31 +17,32 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Bridge on 2018-06-12.
+ * Created by Bridge on 2018-06-15.
  */
 
 public class DialogEditUtil extends AlertDialog {
 
     private String title;
     private String content;
+    private int position;
     private View.OnClickListener yesClickListener;
     private View.OnClickListener noClickListener;
 
     private CallBackEditTextName callBackEditTextName;
     public interface CallBackEditTextName {
-        void callBackName(String name);
+        void callBackNamePosition(String name, int position);
     }
 
-    public static DialogEditUtil getDialog(@NonNull Context context, String title, String content, View.OnClickListener yesListener, View.OnClickListener noListener) {
-        DialogEditUtil dialogUtil = new DialogEditUtil(context, title, content, yesListener, noListener);
-        return dialogUtil;
+    public static DialogEditUtil getDialog(@NonNull Context context, String title, String content, int position, View.OnClickListener yesListener, View.OnClickListener noListener) {
+        return new DialogEditUtil(context, title, content, position, yesListener, noListener);
     }
 
-    public DialogEditUtil(@NonNull Context context, String title, String content,
-                      View.OnClickListener yesClickListener, View.OnClickListener noClickListener) {
+    public DialogEditUtil(@NonNull Context context, String title, String content, int position,
+                          View.OnClickListener yesClickListener, View.OnClickListener noClickListener) {
         super(context);
         this.title = title;
         this.content = content;
+        this.position = position;
         this.yesClickListener = yesClickListener;
         this.noClickListener = noClickListener;
     }
@@ -92,7 +93,7 @@ public class DialogEditUtil extends AlertDialog {
     protected void onStop() {
         super.onStop();
 
-        callBackEditTextName.callBackName(editTextName.getText().toString());
+        callBackEditTextName.callBackNamePosition(editTextName.getText().toString(), position);
     }
 
     public void setOnCallBackListener(CallBackEditTextName listener) {
