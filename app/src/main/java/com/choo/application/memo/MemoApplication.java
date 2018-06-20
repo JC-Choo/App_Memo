@@ -2,11 +2,11 @@ package com.choo.application.memo;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD:app/src/main/java/com/example/cnwlc/memo/MemoApplication.java
 import com.example.cnwlc.memo.App.main.mvp.MainActivity;
@@ -20,6 +20,8 @@ import com.choo.application.memo.App.main_memo.MemoActivity;
 import com.choo.application.memo.App.main.MainActivity;
 >>>>>>> android
 import com.choo.application.memo.App.splash.SplashActivity;
+=======
+>>>>>>> android
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.Util.SharedPreferenceUtil;
