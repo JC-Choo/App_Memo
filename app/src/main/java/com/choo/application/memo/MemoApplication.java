@@ -2,13 +2,10 @@ package com.choo.application.memo;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 
-import com.choo.application.memo.App.main.MainActivity;
-import com.choo.application.memo.App.splash.SplashActivity;
 import com.choo.application.memo.Common.Defines;
 import com.choo.application.memo.Common.Dlog;
 import com.choo.application.memo.Util.SharedPreferenceUtil;
